@@ -4,8 +4,6 @@ defmodule DataProvider.Pagination do
   pages in `DataProvider`.
   """
 
-  alias DataProvider.Data
-
   @default_page 1
   @default_page_size 15
 
