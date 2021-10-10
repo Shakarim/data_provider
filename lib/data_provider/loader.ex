@@ -1,0 +1,18 @@
+defmodule DataProvider.Loader do
+  alias DataProvider.Data
+
+  @doc ~S"""
+  Loads `data` into `:data` field of `DataProvider`
+
+  Receives one argument `DataProvider` only
+  """
+  @spec load(DataProvider.t) :: Data.t
+  def load(%DataProvider{module: module} = data_provider) do
+    find_result = case apply(module, :find, [data_provider]) do
+      %Ecto.Query{} = query -> query
+      find_result when is_list(find_result) -> find_result
+      _ -> raise(DataProvider.UndefinedFindError)
+    end
+    %{data_provider | data: Data.create(data_provider, find_result)}
+  end
+end

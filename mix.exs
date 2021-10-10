@@ -21,6 +21,7 @@ defmodule DataProvider.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {DataProvider.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -32,6 +33,7 @@ defmodule DataProvider.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ecto_sql, "~> 3.4", only: [:test, :dev]},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
