@@ -2,17 +2,20 @@ defmodule DataProvider do
   @moduledoc ~S"""
   Library for simple and comfortable working with table data.
 
-  This library implements API for generate and manipulate data.
-  As example:
+  This library implements API for generate and manipulate data
 
-  1. You have to make a `DataProvider` implementation module, like:
+
+  ## Example
+  Firstly, You have to make a `DataProvider` implementation module, like:
 
       defmodule MyDataLoadModule do
         # Change current module declaration with `DataProvider`
         use DataProvider
 
-        # Required function, have to return Repo implementation.
-        # By default provoke `DataProvider.RepoNotDefinedError` exception
+        # Function which required to return Repo implementation if you
+        # plan to return `Ecto.Query` in `find/1`.
+        # If your `find/1` gonna return not a `Ecto.Query` then defining
+        # `repo/0` have no make sense.
         def repo(), do: MyRepo
 
         # Searching logic, receives `DataProvider` and have to return `Ecto.Query` or `list()`
@@ -22,15 +25,14 @@ defmodule DataProvider do
         def find(%DataProvider{}), do: Ecto.Query.from(p in Posts)
       end
 
-  2. When you declared your `DataProvider` implementation, you can use it as adapter for
-  manupulating data.
+  When you declared your `DataProvider` implementation, you can use it as adapter for
+  manipulate data.
 
       defmodule MyController do
         use MyAppWeb, :controller
         import DataProvider
 
         def index(%Plug.Conn{query_params: query_params, path_params: path_params} = conn, _params) do
-
           # Getting a custom user filtering params (it have to be map). By default,
           # `DataProvider` already contain initial state of searching
           # options (they are empty, no filter, no sorting, nothing).
@@ -40,16 +42,16 @@ defmodule DataProvider do
           # stay in first page position and configurated for 15 items per page.
           page = Map.get(path_params, "page", 1)
 
+          # * `filter(received_filter_params)` - set new filtering params for current `DataProvider`
+          # and return updated `DataProvider`.
+          # * `change_page(page)` - set new value of page number
+          # * `init()` - accept all of your changes and calculate data in the provider.
           data_provider = MyDataLoadModule.data_provider()
-                          # set new filtering params for current `DataProvider` and return
-                          # updated `DataProvider`
                           |> filter(received_filter_params)
-                          # set new value of page number
                           |> change_page(page)
-                          # accept all of your changes and calculate data in the provider.
                           |> init()
 
-            # Usual rendering function
+          # Usual rendering function
           render(conn, "index.html", data_provider: data_provider)
         end
       end
@@ -89,7 +91,7 @@ defmodule DataProvider do
         }
       }
 
-  which contain all required data for using it in another cases, like an rendering the data table,
+  This structure contain all required data for using it in another cases, like an rendering the data table,
   returning it by REST-full API, live-reload functionality and etc.
   """
 

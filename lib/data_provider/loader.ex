@@ -2,7 +2,7 @@ defmodule DataProvider.Loader do
   alias DataProvider.Data
 
   @doc ~S"""
-  Loads `data` into `:data` field of `DataProvider`
+  Loads `DataProvider.Data` into `:data` field of `DataProvider`
 
   Receives one argument `DataProvider` only
   """
