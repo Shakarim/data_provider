@@ -21,8 +21,8 @@ defmodule DataProvider.Pagination do
 
   """
   @type t() :: %__MODULE__{
-                 page: Integer.t(),
-                 page_size: Integer.t
+                 page: integer(),
+                 page_size: integer()
                }
 
   @doc ~S"""
@@ -35,7 +35,7 @@ defmodule DataProvider.Pagination do
     * `page_size` - @default_page_size
 
   """
-  @spec create(Map.t) :: __MODULE__.t
+  @spec create(map()) :: __MODULE__.t
   def create(params \\ %{})
   def create(params) do
     page = Map.get(params, :page, @default_page)
@@ -49,26 +49,26 @@ defmodule DataProvider.Pagination do
   @doc ~S"""
   Returns current page value of `DataProvider` by `DataProvider.Pagination`
   """
-  @spec page(__MODULE__.t) :: Integer.t
+  @spec page(__MODULE__.t) :: integer()
   def page(%__MODULE__{page: page}) when is_integer(page), do: page
 
   @doc ~S"""
   Returns size of page in current `DataProvider.Pagination` of `DataProvider`
   """
-  @spec page_size(__MODULE__.t) :: Integer.t
+  @spec page_size(__MODULE__.t) :: integer()
   def page_size(%__MODULE__{page_size: page_size}) when is_integer(page_size), do: page_size
 
   @doc ~S"""
   Changes the value of field `page`
   """
-  @spec put_page(__MODULE__.t, Integer.t) :: __MODULE__.t
+  @spec put_page(__MODULE__.t, integer()) :: __MODULE__.t
   def put_page(%__MODULE__{} = pagination, page) when is_integer(page),
       do: %{pagination | page: page}
 
   @doc ~S"""
   Changes the value of field `page_size`
   """
-  @spec put_page_size(__MODULE__.t, Integer.t) :: __MODULE__.t
+  @spec put_page_size(__MODULE__.t, integer()) :: __MODULE__.t
   def put_page_size(%__MODULE__{} = pagination, page_size) when is_integer(page_size),
       do: %{pagination | page_size: page_size}
 
@@ -77,7 +77,7 @@ defmodule DataProvider.Pagination do
 
   Requires for calculating start position in list of data or offset in query condition
   """
-  @spec start_position(__MODULE__.t) :: Integer.t
+  @spec start_position(__MODULE__.t) :: integer()
   def start_position(%__MODULE__{} = pagination) do
     with current_page when current_page >= 1 <- page(pagination),
          page_size when page_size >= 1 <- selection_limit(pagination)
@@ -91,7 +91,7 @@ defmodule DataProvider.Pagination do
   @doc """
   Returns count of items, which gonna be put load into `DataProvider.Data`
   """
-  @spec selection_limit(__MODULE__.t) :: Integer.t
+  @spec selection_limit(__MODULE__.t) :: integer()
   def selection_limit(%__MODULE__{} = pagination), do: page_size(pagination)
 
   @doc ~S"""
@@ -99,7 +99,7 @@ defmodule DataProvider.Pagination do
 
   Requires for calculating selection limit in list of data.
   """
-  @spec end_position(__MODULE__.t) :: Integer.t
+  @spec end_position(__MODULE__.t) :: integer()
   def end_position(%__MODULE__{} = pagination) do
     with current_page when current_page >= 1 <- page(pagination),
          page_size when page_size >= 1 <- selection_limit(pagination)

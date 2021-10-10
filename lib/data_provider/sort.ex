@@ -13,7 +13,7 @@ defmodule DataProvider.Sort do
     * `options` - Keyword with data searching options for `DataProvider`
 
   """
-  @type t() :: %__MODULE__{options: Map.t()}
+  @type t() :: %__MODULE__{options: map()}
 
   @doc ~S"""
   Creates new `DataProvider.Sort` with received params

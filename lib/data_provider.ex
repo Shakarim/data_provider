@@ -15,7 +15,7 @@ defmodule DataProvider do
         # By default provoke `DataProvider.RepoNotDefinedError` exception
         def repo(), do: MyRepo
 
-        # Searching logic, receives `DataProvider` and have to return `Ecto.Query` or `List.t`
+        # Searching logic, receives `DataProvider` and have to return `Ecto.Query` or `list()`
         # This function have to implement only searching, with no orders, offsets and limits.
         def find(%DataProvider{search_options: %_{options: %{"title" => title}}),
           do: Ecto.Query.from(p in Posts, where: p.title == ^title)
@@ -177,7 +177,7 @@ defmodule DataProvider do
 
       This function MUST return `List` or `Ecto.Query`
       """
-      @spec find(DataProvider.t) :: Query.t | List.t
+      @spec find(DataProvider.t) :: Query.t | list()
       def find(%DataProvider{} = _data_provider), do: []
 
       @doc ~S"""
@@ -219,7 +219,7 @@ defmodule DataProvider do
         (for actualizing data provider you will be have to call `init/1`).
 
       """
-      @spec data_provider(Map.t, Keyword.t) :: DataProvider.t
+      @spec data_provider(map(), Keyword.t) :: DataProvider.t
       def data_provider(search_options \\ %{}, data_provider_options \\ [], opts \\ [])
       def data_provider(search_options, data_provider_options, opts) do
         data_provider = %{DataProvider.create(search_options, data_provider_options) | module: __MODULE__}
@@ -234,7 +234,7 @@ defmodule DataProvider do
   Function for creating new data provider by search options and module
   configurations.
   """
-  @spec create(Map.t, Keyword.t) :: DataProvider.t
+  @spec create(map(), Keyword.t) :: DataProvider.t
   def create(search_options \\ %{}, opts \\ [])
   def create(search_options, opts) do
     %DataProvider{
@@ -264,7 +264,7 @@ defmodule DataProvider do
   @doc ~S"""
   Return current page number of `DataProvider`
   """
-  @spec page_number(DataProvider.t) :: Integer.t
+  @spec page_number(DataProvider.t) :: integer()
   def page_number(%DataProvider{pagination: %Pagination{} = pagination}), do: Pagination.page(pagination)
 
   @doc ~S"""
@@ -275,7 +275,7 @@ defmodule DataProvider do
   This function are not wait calling `init/1`. Calling the `go_to_page/2`
   reloads data provider right away.
   """
-  @spec go_to_page(DataProvider.t, Integer.t) :: DataProvider.t
+  @spec go_to_page(DataProvider.t, integer()) :: DataProvider.t
   def go_to_page(%DataProvider{} = data_provider, page), do: change_page(data_provider, page, instant: true)
 
   @doc ~S"""
@@ -295,7 +295,7 @@ defmodule DataProvider do
     reloaded instantly, otherwise search params will be loaded with no reloading (for actualizing
     data provider you will be have to call `init/1`). By default is `false`.
   """
-  @spec change_page(DataProvider.t, Integer.t, Keyword.t) :: DataProvider.t
+  @spec change_page(DataProvider.t, integer(), Keyword.t) :: DataProvider.t
   def change_page(data_provider, page, opts \\ [])
   def change_page(%DataProvider{pagination: %Pagination{} = pagination} = data_provider, page, opts) when is_integer(page) do
     data_provider = %{data_provider | pagination: Pagination.put_page(pagination, page)}
@@ -325,7 +325,7 @@ defmodule DataProvider do
     data provider you will be have to call `init/1`). By default is `false`.
 
   """
-  @spec filter(DataProvider.t, Map.t, Keyword.t) :: DataProvider.t
+  @spec filter(DataProvider.t, map(), Keyword.t) :: DataProvider.t
   def filter(data_provider, params \\ %{}, opts \\ [])
   def filter(%DataProvider{} = data_provider, params, opts) when is_map(params) do
     serach_options = if Keyword.get(opts, :merge) === true,

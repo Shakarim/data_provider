@@ -22,7 +22,7 @@ defmodule DataProvider.Data do
     * `total_count` - integer value with count of items in `items`
 
   """
-  @type t() :: %__MODULE__{items: List.t(), total_count: Integer.t}
+  @type t() :: %__MODULE__{items: list(), total_count: integer()}
 
   @doc ~S"""
   Creates `DataProvider.Data` struct by received `find_result` and `DataProvider`.
@@ -42,12 +42,12 @@ defmodule DataProvider.Data do
     result of execution gonna be put into `items` of new `DataProvider.Data`
     struct.
 
-    2. If received `find_result` is a `List.t`, then it will be processed by
+    2. If received `find_result` is a `list()`, then it will be processed by
     `DataProvider.ListModifier`. The received data will be put into `items`
     of new `DataProvider.Data` struct.
 
   """
-  @spec create(DataProvider.t, Query.t | List.t) :: __MODULE__.t
+  @spec create(DataProvider.t, Query.t | list()) :: __MODULE__.t
   def create(%DataProvider{module: module} = data_provider, %Query{} = find_result) do
     query = QueryModifier.modify(find_result, data_provider)
     query_all(module, query)
@@ -87,7 +87,7 @@ defmodule DataProvider.Data do
   end
 
   # Generates `DataProvider.Data` with received `items` list
-  @spec new(List.t) :: DataProvider.Data.t
+  @spec new(list()) :: DataProvider.Data.t
   defp new(items) when is_list(items), do: %__MODULE__{items: items}
 
   # Calculate and set `total_count` for received `DataProvider.Data`
