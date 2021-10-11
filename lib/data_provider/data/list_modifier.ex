@@ -1,8 +1,12 @@
 defmodule DataProvider.Data.ListModifier do
   @moduledoc false
+  # List modificator for `DataProvider.Data`.
+  #
+  # Needs `DataProvider.Data` for changing the data list by exist configurations
 
   alias DataProvider.Pagination
 
+  # Modify received data list by `DataProvider` confiruration in second argument
   @spec modify(list(), DataProvider.t) :: list()
   def modify(items_list, %DataProvider{pagination: %Pagination{} = pagination}) when is_list(items_list) do
     start_offset = Pagination.start_position(pagination)

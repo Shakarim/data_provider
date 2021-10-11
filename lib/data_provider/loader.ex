@@ -1,11 +1,10 @@
 defmodule DataProvider.Loader do
+  @moduledoc false
   alias DataProvider.Data
 
-  @doc ~S"""
-  Loads `DataProvider.Data` into `:data` field of `DataProvider`
-
-  Receives one argument `DataProvider` only
-  """
+  @doc false
+  # Loads `DataProvider.Data` into `:data` field of `DataProvider`
+  # Receives one argument `DataProvider` only
   @spec load(DataProvider.t) :: Data.t
   def load(%DataProvider{module: module} = data_provider) do
     find_result = case apply(module, :find, [data_provider]) do

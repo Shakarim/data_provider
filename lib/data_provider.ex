@@ -4,8 +4,23 @@ defmodule DataProvider do
 
   This library implements API for generate and manipulate data
 
+  ## Getting started
 
-  ## Example
+  Add this tuple into `deps()` of your `mix.exs`
+
+      def deps() do
+        [
+          ...
+          {:data_provider, "~> 1.1"}
+          ...
+        ]
+      end
+
+  To install these dependencies, we will run this command:
+
+      mix deps.get
+
+  ## Using example
   Firstly, You have to make a `DataProvider` implementation module, like:
 
       defmodule MyDataLoadModule do

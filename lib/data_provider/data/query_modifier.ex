@@ -1,18 +1,16 @@
 defmodule DataProvider.Data.QueryModifier do
-  @moduledoc ~S"""
-  Query modificator for `DataProvider.Data`.
-
-  Needs `DataProvider.Data` for changing the `Ecto.Query`
-  """
+  @moduledoc false
+  # Query modificator for `DataProvider.Data`.
+  #
+  # Needs `DataProvider.Data` for changing the `Ecto.Query`
 
   alias Ecto.Query
   alias DataProvider.Pagination
   alias DataProvider.Sort
   import Query
 
-  @doc ~S"""
-  Modify received `Ecto.Query` by `DataProvider` in second argument
-  """
+  @doc false
+  # Modify received `Ecto.Query` by `DataProvider` in second argument
   @spec modify(Query.t, DataProvider.t) :: Query.t
   def modify(%Query{} = query, %DataProvider{} = data_provider) do
     query
