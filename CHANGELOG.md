@@ -5,6 +5,7 @@
 ### Bug fixes
 
 * Add correctly raising of `DataProvider.RepoCallError` for implementations, which `find/1` returns `Ecto.Query` but `repo/0` returns not a `Ecto.Repo` implementation.
+* Fix error of calculating the total data count in `DataProvider`. Before, total count were calculated based on exist items in `DataProvider.Data`. It was wrong, because `items` of `DataProvider.Data` contain items count, which limited by `page_size` of `DataProvider.Pagination`. From now on, total count calculates based on `DataProvider.SearchOptions` with no `DataProvider.Pagination` influence.
     
 ### Enhancements
 
