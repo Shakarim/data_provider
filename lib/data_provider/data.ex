@@ -69,7 +69,11 @@ defmodule DataProvider.Data do
   # Initiate query executing by received repo and query
   @spec init_query(any(), Query.t) :: __MODULE__.t
   defp init_query(repo, query) do
-    repo.__info__(:functions)
+    try do
+      repo.__info__(:functions)
+    rescue
+      _ -> []
+    end
     |> Keyword.has_key?(:all)
     |> query_by_exist(repo, query)
   end
