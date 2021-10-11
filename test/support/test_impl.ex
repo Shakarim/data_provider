@@ -29,7 +29,7 @@ defmodule DataProvider.TestImpl do
             quote do
               import Ecto.Query
 
-              def find(%DataProvider{}), do: []
+              def find(%DataProvider{}), do: Enum.to_list(1..200)
             end
           :invalid ->
             quote do
