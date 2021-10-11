@@ -35,14 +35,6 @@ defmodule DataProviderTest do
   @list_filtered_items [324, 328, 332, 336, 340, 344, 348, 352, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400]
   @list_filtered_total 250
 
-  def fixture(:data_provider, _),
-      do: DataProvider.create @search_params, @options
-
-
-  defp data_provider(params), do: {:ok, data_provider: fixture(:data_provider, params)}
-
-  setup [:data_provider]
-
   describe "`repo/0` of implementation |" do
     test "test for `NoFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
