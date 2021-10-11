@@ -272,7 +272,7 @@ defmodule DataProvider do
   @doc ~S"""
   Returns `DataProvider` with loaded new page.
 
-  This function works similar `page/2` with one difference.
+  This function works similar `change_page/2` with one difference.
 
   This function are not wait calling `init/1`. Calling the `go_to_page/2`
   reloads data provider right away.
