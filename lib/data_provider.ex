@@ -152,7 +152,7 @@ defmodule DataProvider do
     defexception message: "error of calling `Repo.all/2`, make sure that your `DataProvider` implementation is correct"
   end
 
-  defmodule UndefinedFindError do
+  defmodule UndefinedFindResultError do
     @moduledoc ~S"""
     Raise for `find/1` function calling
     """

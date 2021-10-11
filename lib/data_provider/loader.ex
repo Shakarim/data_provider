@@ -11,7 +11,7 @@ defmodule DataProvider.Loader do
     find_result = case apply(module, :find, [data_provider]) do
       %Ecto.Query{} = query -> query
       find_result when is_list(find_result) -> find_result
-      _ -> raise(DataProvider.UndefinedFindError)
+      _ -> raise(DataProvider.UndefinedFindResultError)
     end
     %{data_provider | data: Data.create(data_provider, find_result)}
   end
