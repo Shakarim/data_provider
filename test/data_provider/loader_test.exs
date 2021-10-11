@@ -51,7 +51,7 @@ defmodule DataProvider.LoaderTest do
     test "test `QueryFindInvalidRepo` loading" do
       data_provider = QueryFindInvalidRepo.data_provider()
 
-      assert_raise UndefinedFunctionError, fn ->
+      assert_raise DataProvider.RepoCallError, fn ->
         Loader.load(data_provider)
       end
     end
@@ -78,21 +78,21 @@ defmodule DataProvider.LoaderTest do
     test "test `InvalidFindNoRepo` loading" do
       data_provider = InvalidFindNoRepo.data_provider()
 
-      assert_raise DataProvider.UndefinedFindError, fn ->
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
         Loader.load(data_provider)
       end
     end
     test "test `InvalidFindValidRepo` loading" do
       data_provider = InvalidFindValidRepo.data_provider()
 
-      assert_raise DataProvider.UndefinedFindError, fn ->
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
         Loader.load(data_provider)
       end
     end
     test "test `InvalidFindInvalidRepo` loading" do
       data_provider = InvalidFindInvalidRepo.data_provider()
 
-      assert_raise DataProvider.UndefinedFindError, fn ->
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
         Loader.load(data_provider)
       end
     end

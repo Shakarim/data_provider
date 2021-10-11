@@ -1,12 +1,12 @@
 defmodule DataProvider.Data.QueryModifierTest do
   use ExUnit.Case
   use DataProvider.DataCase
-  alias DataProvider.FakeModules.FakeSchema
+  alias DataProvider.TestSchema
   alias DataProvider.Data.QueryModifier
   import Ecto.Query
 
   def fixture(:data_provider, _params), do: DataProvider.create()
-  def fixture(:query, _params), do: from(t in FakeSchema)
+  def fixture(:query, _params), do: from(t in TestSchema)
 
 
   defp data_provider(params), do: {:ok, data_provider: fixture(:data_provider, params)}
