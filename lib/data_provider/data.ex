@@ -86,7 +86,7 @@ defmodule DataProvider.Data do
     |> total_count()
   end
   defp query_by_exist(false, repo, _) do
-    message = "error of calling `Repo.all/2`, make sure that your `#{repo}` implementation is correct"
+    message = "error of calling `Repo.all/2`, make sure that your `#{repo}` module is correct `Ecto.Repo` implementation"
     raise(DataProvider.RepoCallError, message: message)
   end
 
