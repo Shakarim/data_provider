@@ -99,7 +99,7 @@ defmodule DataProvider do
         },
         sort: %DataProvider.Sort{
           options: []
-        }
+        },
         pagination: %DataProvider.Pagination{
           page: 2,
           page_size: 15
