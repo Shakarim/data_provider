@@ -49,52 +49,51 @@ defmodule DataProvider.Data do
   """
   @spec create(DataProvider.t, Query.t | list()) :: __MODULE__.t
   def create(%DataProvider{module: module} = data_provider, %Query{} = find_result) do
+    repo = apply(module, :repo, [])
     query = QueryModifier.modify(find_result, data_provider)
-    query_all(module, query)
+
+    %__MODULE__{}
+    |> load_items(repo, query)
+    |> load_total_count(repo, find_result)
   end
   def create(%DataProvider{} = data_provider, find_result) when is_list(find_result) do
-    ListModifier.modify(find_result, data_provider)
-    |> new()
-    |> total_count()
+    %__MODULE__{
+      items: ListModifier.modify(find_result, data_provider),
+      total_count: Enum.count(find_result)
+    }
   end
 
-
-  # Init getting data from `Repo` implementation
-  defp query_all(module, query) do
-    module
-    |> apply(:repo, [])
-    |> init_query(query)
-  end
-
-  # Initiate query executing by received repo and query
-  @spec init_query(any(), Query.t) :: __MODULE__.t
-  defp init_query(repo, query) do
+  # load `:items` into received `DataProvider.Data`
+  @spec load_items(__MODULE__.t, any(), Query.t) :: __MODULE__.t
+  defp load_items(%__MODULE__{} = data, repo, %Query{} = query) do
     try do
       repo.__info__(:functions)
     rescue
       _ -> []
     end
     |> Keyword.has_key?(:all)
-    |> query_by_exist(repo, query)
+    |> case do
+         true -> %{data | items: apply(repo, :all, [query])}
+         false ->
+           message = "error of calling `Repo.all/2`, make sure that your `#{repo}` module is correct `Ecto.Repo` implementation"
+           raise(DataProvider.RepoCallError, message: message)
+       end
   end
 
-  # Calls `Repo.all/2` if first argument is true, otherwise raise `DataProvider.RepoCallError`
-  @spec query_by_exist(Boolean.t, any(), Query.t) :: __MODULE__.t
-  defp query_by_exist(true, repo, query) do
-    apply(repo, :all, [query])
-    |> new()
-    |> total_count()
+  # load `:total_count` into received `DataProvider.Data`
+  @spec load_total_count(__MODULE__.t, any(), Query.t) :: __MODULE__.t
+  defp load_total_count(%__MODULE__{} = data, repo, %Query{} = query) do
+    try do
+      repo.__info__(:functions)
+    rescue
+      _ -> []
+    end
+    |> Keyword.has_key?(:aggregate)
+    |> case do
+         true -> %{data | total_count: apply(repo, :aggregate, [query, :count])}
+         false ->
+           message = "error of calling `Repo.aggregate/2`, make sure that your `#{repo}` module is correct `Ecto.Repo` implementation"
+           raise(DataProvider.RepoCallError, message: message)
+       end
   end
-  defp query_by_exist(false, repo, _) do
-    message = "error of calling `Repo.all/2`, make sure that your `#{repo}` module is correct `Ecto.Repo` implementation"
-    raise(DataProvider.RepoCallError, message: message)
-  end
-
-  # Generates `DataProvider.Data` with received `items` list
-  @spec new(list()) :: DataProvider.Data.t
-  defp new(items) when is_list(items), do: %__MODULE__{items: items}
-
-  # Calculate and set `total_count` for received `DataProvider.Data`
-  @spec total_count(__MODULE__.t) :: __MODULE__.t
-  defp total_count(%__MODULE__{items: items} = data), do: %{data | total_count: Enum.count(items)}
 end
