@@ -37,13 +37,10 @@ defmodule DataProvider.Pagination do
   """
   @spec create(map()) :: __MODULE__.t
   def create(params \\ %{})
-  def create(params) do
-    page = Map.get(params, :page, @default_page)
-    page_size = Map.get(params, :page_size, @default_page_size)
-
+  def create(params) when is_map(params) do
     %__MODULE__{}
-    |> put_page(page)
-    |> put_page_size(page_size)
+    |> put_page(Map.get(params, :page, @default_page))
+    |> put_page_size(Map.get(params, :page_size, @default_page_size))
   end
 
   @doc ~S"""
