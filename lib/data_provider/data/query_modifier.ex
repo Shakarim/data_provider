@@ -6,7 +6,6 @@ defmodule DataProvider.Data.QueryModifier do
 
   alias Ecto.Query
   alias DataProvider.Pagination
-  alias DataProvider.Pagination.Params
   alias DataProvider.Sort
   import Query
 

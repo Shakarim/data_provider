@@ -1,5 +1,5 @@
 defmodule DataProvider.TestModules do
-  @doc false
+  @moduledoc false
 
   # alias DataProvider.TestModules.NoFindNoRepo
   # alias DataProvider.TestModules.NoFindValidRepo
