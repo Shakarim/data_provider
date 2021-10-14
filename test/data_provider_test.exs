@@ -17,24 +17,6 @@ defmodule DataProviderTest do
   alias Ecto.Query
   doctest DataProvider
 
-  @default_page_size 15
-
-  @search_params %{"rem" => 4}
-  @options [
-    sort: [asc: :filter_param_1],
-    pagination: %{page: 5, page_size: 20}
-  ]
-
-  @query_default_total 100
-  @query_default_items [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100]
-  @query_filtered_total 100
-  @query_filtered_items [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100]
-
-  @list_default_total 1000
-  @list_default_items [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-  @list_filtered_items [324, 328, 332, 336, 340, 344, 348, 352, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400]
-  @list_filtered_total 250
-
   describe "`repo/0` of implementation |" do
     test "test for `NoFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
@@ -226,489 +208,477 @@ defmodule DataProviderTest do
 
   describe "`data_provider` of implementation with default arguments |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider()
+      result = NoFindNoRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindNoRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider()
+      result = NoFindValidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindValidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider()
+      result = NoFindInvalidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindInvalidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
-      data_provider = QueryFindNoRepo.data_provider()
+      result = QueryFindNoRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindNoRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: QueryFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider()
+      result = QueryFindValidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindValidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
-      data_provider = QueryFindInvalidRepo.data_provider()
+      result = QueryFindInvalidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindInvalidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: QueryFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider()
+      result = ListFindNoRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindNoRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider()
+      result = ListFindValidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindValidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider()
+      result = ListFindInvalidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindInvalidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
-      data_provider = InvalidFindNoRepo.data_provider()
+      result = InvalidFindNoRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === InvalidFindNoRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: InvalidFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `InvalidFindValidRepo`" do
-      data_provider = InvalidFindValidRepo.data_provider()
+      result = InvalidFindValidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === InvalidFindValidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: InvalidFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `InvalidFindInvalidRepo`" do
-      data_provider = InvalidFindInvalidRepo.data_provider()
+      result = InvalidFindInvalidRepo.data_provider()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === InvalidFindInvalidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: InvalidFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
   end
 
   describe "`data_provider` of implementation with no default arguments |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(@search_params, @options)
+      result = NoFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(@search_params, @options)
+      result = NoFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(@search_params, @options)
+      result = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
-      data_provider = QueryFindNoRepo.data_provider(@search_params, @options)
+      result = QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: QueryFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(@search_params, @options)
+      result = QueryFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
-      data_provider = QueryFindInvalidRepo.data_provider(@search_params, @options)
+      result = QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: QueryFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(@search_params, @options)
+      result = ListFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(@search_params, @options)
+      result = ListFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(@search_params, @options)
+      result = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
-      data_provider = InvalidFindNoRepo.data_provider(@search_params, @options)
+      result = InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === InvalidFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: InvalidFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `InvalidFindValidRepo`" do
-      data_provider = InvalidFindValidRepo.data_provider(@search_params, @options)
+      result = InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === InvalidFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: InvalidFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `InvalidFindInvalidRepo`" do
-      data_provider = InvalidFindInvalidRepo.data_provider(@search_params, @options)
+      result = InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === InvalidFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: InvalidFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
   end
 
   describe "`data_provider` of implementation with no default arguments (auto init) |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(@search_params, @options, init: true)
+      data_provider = %DataProvider{
+        module: NoFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = NoFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert data_provider === result
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(@search_params, @options, init: true)
+      data_provider = %DataProvider{
+        module: NoFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = NoFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert data_provider === result
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(@search_params, @options, init: true)
+      data_provider = %DataProvider{
+        module: NoFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert data_provider === result
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(@search_params, @options, init: true)
+        QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(@search_params, @options, init: true)
+      data_provider = %DataProvider{
+        module: QueryFindValidRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = QueryFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @query_filtered_items
-      assert data_provider.data.total_count === @query_filtered_total
+      assert data_provider === result
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(@search_params, @options, init: true)
+        QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(@search_params, @options, init: true)
+      data_provider = %DataProvider{
+        module: ListFindNoRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = ListFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @list_filtered_items
-      assert data_provider.data.total_count === @list_filtered_total
+      assert data_provider === result
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(@search_params, @options, init: true)
+      data_provider = %DataProvider{
+        module: ListFindValidRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = ListFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @list_filtered_items
-      assert data_provider.data.total_count === @list_filtered_total
+      assert data_provider === result
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(@search_params, @options, init: true)
+      data_provider = %DataProvider{
+        module: ListFindInvalidRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @list_filtered_items
-      assert data_provider.data.total_count === @list_filtered_total
+      assert data_provider === result
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(@search_params, @options, init: true)
+        InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(@search_params, @options, init: true)
+        InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(@search_params, @options, init: true)
+        InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
   end
 
   describe "`create/2` |" do
     test "test default arguments" do
-      data_provider = DataProvider.create()
+      data_provider = %DataProvider{
+        module: :not_implemented,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
+      result = DataProvider.create()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === :not_implemented
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert data_provider === result
     end
 
     test "test with no default arguments" do
-      data_provider = DataProvider.create(@search_params, @options)
+      data_provider = %DataProvider{
+        module: :not_implemented,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+      result = DataProvider.create(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === :not_implemented
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert data_provider === result
     end
   end
 
   describe "`init/1` dataprovider with default arguments |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider()
-                      |>  DataProvider.init()
+      result = NoFindNoRepo.data_provider()
+               |>  DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindNoRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider()
-                      |>  DataProvider.init()
+      result = NoFindValidRepo.data_provider()
+               |>  DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindValidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider()
-                      |>  DataProvider.init()
+      result = NoFindInvalidRepo.data_provider()
+               |>  DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindInvalidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider()
-        |>  DataProvider.init()
+        QueryFindNoRepo.data_provider() |>  DataProvider.init()
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider()
-                      |>  DataProvider.init()
+      result = QueryFindValidRepo.data_provider()
+               |>  DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindValidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === @query_default_items
-      assert data_provider.data.total_count === @query_default_total
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
@@ -718,40 +688,40 @@ defmodule DataProviderTest do
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider()
+      result = ListFindNoRepo.data_provider()
                       |>  DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindNoRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === @list_default_items
-      assert data_provider.data.total_count === @list_default_total
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider()
+      result = ListFindValidRepo.data_provider()
                       |>  DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindValidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === @list_default_items
-      assert data_provider.data.total_count === @list_default_total
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider()
+      result = ListFindInvalidRepo.data_provider()
                       |>  DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindInvalidRepo
-      assert data_provider.search_options === DataProvider.SearchOptions.create()
-      assert data_provider.pagination === DataProvider.Pagination.create()
-      assert data_provider.sort === DataProvider.Sort.create()
-      assert data_provider.data.items === @list_default_items
-      assert data_provider.data.total_count === @list_default_total
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
@@ -773,774 +743,959 @@ defmodule DataProviderTest do
 
   describe "`init/1` with no default arguments |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(@search_params, @options)
-                      |> DataProvider.init()
+      result = NoFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+               |> DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(@search_params, @options)
+      result = NoFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
                       |> DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(@search_params, @options)
+      result = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
                       |> DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === NoFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === []
-      assert data_provider.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(@search_params, @options) |> DataProvider.init()
+        QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(@search_params, @options)
-                      |> DataProvider.init()
+      result = QueryFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+               |> DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === QueryFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @query_filtered_items
-      assert data_provider.data.total_count === @query_filtered_total
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(@search_params, @options) |> DataProvider.init()
+        QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(@search_params, @options)
-                      |> DataProvider.init()
+      result = ListFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+               |> DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindNoRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @list_filtered_items
-      assert data_provider.data.total_count === @list_filtered_total
+      assert result === %DataProvider{
+        module: ListFindNoRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(@search_params, @options)
-                      |> DataProvider.init()
+      result = ListFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+               |> DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindValidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @list_filtered_items
-      assert data_provider.data.total_count === @list_filtered_total
+      assert result === %DataProvider{
+        module: ListFindValidRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(@search_params, @options)
-                      |> DataProvider.init()
+      result = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+               |> DataProvider.init()
 
-      assert match?(%DataProvider{}, data_provider)
-      assert data_provider.module === ListFindInvalidRepo
-      assert data_provider.search_options.options === @search_params
-      assert data_provider.pagination.page === (@options)[:pagination].page
-      assert data_provider.pagination.page_size === (@options)[:pagination].page_size
-      assert data_provider.sort.options === (@options)[:sort]
-      assert data_provider.data.items === @list_filtered_items
-      assert data_provider.data.total_count === @list_filtered_total
+      assert result === %DataProvider{
+        module: ListFindInvalidRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(@search_params, @options) |> DataProvider.init()
+        InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(@search_params, @options) |> DataProvider.init()
+        InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(@search_params, @options) |> DataProvider.init()
+        InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
       end
     end
   end
 
   describe "`reload/1` |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(%{}, [], init: true)
-      new_data_provider = %{
-        data_provider |
-        search_options: %{data_provider.search_options | options: @search_params},
-        pagination: %{
-          data_provider.pagination |
-          page: (@options)[:pagination].page,
-          page_size: (@options)[:pagination].page_size
-        }
-      }
-      result = DataProvider.reload(new_data_provider)
+      result = NoFindNoRepo.data_provider()
+               |>  DataProvider.reload()
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === 5
-      assert result.pagination.page_size === 20
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(%{}, [], init: true)
-      new_data_provider = %{
-        data_provider |
-        search_options: %{data_provider.search_options | options: @search_params},
-        pagination: %{
-          data_provider.pagination |
-          page: (@options)[:pagination].page,
-          page_size: (@options)[:pagination].page_size
-        }
-      }
-      result = DataProvider.reload(new_data_provider)
+      result = NoFindValidRepo.data_provider()
+               |>  DataProvider.reload()
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === 5
-      assert result.pagination.page_size === 20
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(%{}, [], init: true)
-      new_data_provider = %{
-        data_provider |
-        search_options: %{data_provider.search_options | options: @search_params},
-        pagination: %{
-          data_provider.pagination |
-          page: (@options)[:pagination].page,
-          page_size: (@options)[:pagination].page_size
-        }
-      }
-      result = DataProvider.reload(new_data_provider)
+      result = NoFindInvalidRepo.data_provider()
+               |>  DataProvider.reload()
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === 5
-      assert result.pagination.page_size === 20
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(%{}, [], init: true)
+        QueryFindNoRepo.data_provider()
+        |>  DataProvider.init()
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(%{}, [], init: true)
-      new_data_provider = %{
-        data_provider |
-        search_options: %{data_provider.search_options | options: @search_params},
-        pagination: %{
-          data_provider.pagination |
-          page: (@options)[:pagination].page,
-          page_size: (@options)[:pagination].page_size
-        }
-      }
-      result = DataProvider.reload(new_data_provider)
+      result = QueryFindValidRepo.data_provider()
+               |>  DataProvider.reload()
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === (@options)[:pagination].page_size
-      assert result.data.items === @query_filtered_items
-      assert result.data.total_count === @query_filtered_total
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(%{}, [], init: true)
+        QueryFindInvalidRepo.data_provider()
+        |>  DataProvider.init()
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(%{}, [], init: true)
-      new_data_provider = %{
-        data_provider |
-        search_options: %{data_provider.search_options | options: @search_params},
-        pagination: %{
-          data_provider.pagination |
-          page: (@options)[:pagination].page,
-          page_size: (@options)[:pagination].page_size
-        }
-      }
-      result = DataProvider.reload(new_data_provider)
+      result = ListFindNoRepo.data_provider()
+               |>  DataProvider.reload()
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === (@options)[:pagination].page_size
-      assert result.data.items === @list_filtered_items
-      assert result.data.total_count === @list_filtered_total
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(%{}, [], init: true)
-      new_data_provider = %{
-        data_provider |
-        search_options: %{data_provider.search_options | options: @search_params},
-        pagination: %{
-          data_provider.pagination |
-          page: (@options)[:pagination].page,
-          page_size: (@options)[:pagination].page_size
-        }
-      }
-      result = DataProvider.reload(new_data_provider)
+      result = ListFindValidRepo.data_provider()
+               |>  DataProvider.reload()
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === (@options)[:pagination].page_size
-      assert result.data.items === @list_filtered_items
-      assert result.data.total_count === @list_filtered_total
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(%{}, [], init: true)
-      new_data_provider = %{
-        data_provider |
-        search_options: %{data_provider.search_options | options: @search_params},
-        pagination: %{
-          data_provider.pagination |
-          page: (@options)[:pagination].page,
-          page_size: (@options)[:pagination].page_size
-        }
-      }
-      result = DataProvider.reload(new_data_provider)
+      result = ListFindInvalidRepo.data_provider()
+               |>  DataProvider.reload()
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === (@options)[:pagination].page_size
-      assert result.data.items === @list_filtered_items
-      assert result.data.total_count === @list_filtered_total
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(%{}, [], init: true)
+        InvalidFindNoRepo.data_provider() |>  DataProvider.init()
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(%{}, [], init: true)
+        InvalidFindValidRepo.data_provider() |>  DataProvider.init()
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(%{}, [], init: true)
+        InvalidFindInvalidRepo.data_provider() |>  DataProvider.init()
       end
     end
   end
 
   describe "`page_number/1`" do
     test "test default value" do
-      result = DataProvider.create()
+      data_provider = %DataProvider{
+        module: NoFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{}
+      }
+      result = DataProvider.page_number(data_provider)
 
-      assert DataProvider.page_number(result) === 1
+      assert result === 1
     end
 
     test "test value" do
-      result = DataProvider.create(@search_params, @options)
+      data_provider = %DataProvider{
+        module: NoFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{}},
+        pagination: %DataProvider.Pagination{page: 234, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{}
+      }
+      result = DataProvider.page_number(data_provider)
 
-      assert DataProvider.page_number(result) === (@options)[:pagination].page
+      assert result === 234
     end
   end
 
   describe "`go_to_page/2` |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(%{}, [], init: true)
-      result = DataProvider.go_to_page(data_provider, (@options)[:pagination].page)
+      data_provider = NoFindNoRepo.data_provider(%{"rem" => 4}, init: true)
+      result = DataProvider.go_to_page(data_provider, 10)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(%{}, [], init: true)
-      result = DataProvider.go_to_page(data_provider, (@options)[:pagination].page)
+      data_provider = NoFindValidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.go_to_page(data_provider, 10)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(%{}, [], init: true)
-      result = DataProvider.go_to_page(data_provider, (@options)[:pagination].page)
+      data_provider = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.go_to_page(data_provider, 10)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(%{}, [], init: true)
+        QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(%{}, [], init: true)
-      result = DataProvider.go_to_page(data_provider, (@options)[:pagination].page)
+      data_provider = QueryFindValidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.go_to_page(data_provider, 10)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === @query_filtered_items
-      assert result.data.total_count === @query_filtered_total
+      assert data_provider === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(%{}, [], init: true)
+        QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(%{}, [], init: true)
-      result = DataProvider.go_to_page(data_provider, (@options)[:pagination].page)
+      data_provider = ListFindNoRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.go_to_page(data_provider, 10)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === Enum.to_list(61..75)
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(%{}, [], init: true)
-      result = DataProvider.go_to_page(data_provider, (@options)[:pagination].page)
+      data_provider = ListFindValidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.go_to_page(data_provider, 10)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === Enum.to_list(61..75)
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(%{}, [], init: true)
-      result = DataProvider.go_to_page(data_provider, (@options)[:pagination].page)
+      data_provider = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.go_to_page(data_provider, 10)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === Enum.to_list(61..75)
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(%{}, [], init: true)
+        InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(%{}, [], init: true)
+        InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(%{}, [], init: true)
+        InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
+  end
+
+  test "`change_page/2` default call |" do
+    data_provider = %DataProvider{
+      module: NoFindNoRepo,
+      data: %DataProvider.Data{items: [], total_count: 0},
+      search_options: %DataProvider.SearchOptions{options: %{}},
+      pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+      sort: %DataProvider.Sort{}
+    }
+    result = DataProvider.change_page(data_provider, 123)
+
+    assert result === %DataProvider{
+             module: NoFindNoRepo,
+             data: %DataProvider.Data{items: [], total_count: 0},
+             search_options: %DataProvider.SearchOptions{options: %{}},
+             pagination: %DataProvider.Pagination{page: 123, params: %DataProvider.Pagination.Params{page_size: 15}},
+             sort: %DataProvider.Sort{}
+           }
   end
 
   describe "`change_page/2` instant call |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(%{}, [])
-      result = DataProvider.change_page(data_provider, (@options)[:pagination].page, instant: true)
+      data_provider = NoFindNoRepo.data_provider(%{"rem" => 4})
+      result = DataProvider.change_page(data_provider, 10, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.change_page(data_provider, (@options)[:pagination].page, instant: true)
+      data_provider = NoFindValidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.change_page(data_provider, 10, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(%{}, [])
-      result = DataProvider.change_page(data_provider, (@options)[:pagination].page, instant: true)
+      data_provider = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.change_page(data_provider, 10, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(%{}, [], init: true)
+        QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.change_page(data_provider, (@options)[:pagination].page, instant: true)
+      data_provider = QueryFindValidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.change_page(data_provider, 10, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === @query_filtered_items
-      assert result.data.total_count === @query_filtered_total
+      assert data_provider === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(%{}, [], init: true)
+        QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(%{}, [])
-      result = DataProvider.change_page(data_provider, (@options)[:pagination].page, instant: true)
+      data_provider = ListFindNoRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.change_page(data_provider, 10, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === Enum.to_list(61..75)
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.change_page(data_provider, (@options)[:pagination].page, instant: true)
+      data_provider = ListFindValidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.change_page(data_provider, 10, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === Enum.to_list(61..75)
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(%{}, [])
-      result = DataProvider.change_page(data_provider, (@options)[:pagination].page, instant: true)
+      data_provider = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [], init: true)
+      result = DataProvider.change_page(data_provider, 10, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === []
-      assert result.pagination.page === (@options)[:pagination].page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === Enum.to_list(61..75)
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(%{}, [], init: true)
+        InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(%{}, [], init: true)
+        InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(%{}, [], init: true)
+        InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
   end
 
+  test "`filter/2` default call |" do
+    data_provider = %DataProvider{
+      module: NoFindNoRepo,
+      data: %DataProvider.Data{items: [], total_count: 0},
+      search_options: %DataProvider.SearchOptions{options: %{}},
+      pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+      sort: %DataProvider.Sort{}
+    }
+    result = DataProvider.filter(data_provider, %{my_custom: "filter"})
+
+    assert result === %DataProvider{
+             module: NoFindNoRepo,
+             data: %DataProvider.Data{items: [], total_count: 0},
+             search_options: %DataProvider.SearchOptions{options: %{my_custom: "filter"}},
+             pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+             sort: %DataProvider.Sort{}
+           }
+  end
+
   describe "`filter/2` instant call |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(%{}, [])
-      result = DataProvider.filter(data_provider, @search_params, instant: true)
+      data_provider = NoFindNoRepo.data_provider()
+      result = DataProvider.filter(data_provider, %{"rem" => 4}, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.filter(data_provider, @search_params, instant: true)
+      data_provider = NoFindValidRepo.data_provider()
+      result = DataProvider.filter(data_provider, %{"rem" => 4}, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(%{}, [])
-      result = DataProvider.filter(data_provider, @search_params, instant: true)
+      data_provider = NoFindInvalidRepo.data_provider()
+      result = DataProvider.filter(data_provider, %{"rem" => 4}, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(%{}, [], init: true)
+        QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.filter(data_provider, @search_params, instant: true)
+      data_provider = QueryFindValidRepo.data_provider()
+      result = DataProvider.filter(data_provider, %{"rem" => 4}, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === @query_filtered_items
-      assert result.data.total_count === @query_filtered_total
+      assert data_provider === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(%{}, [], init: true)
+        QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(%{}, [])
-      result = DataProvider.filter(data_provider, @search_params, instant: true)
+      data_provider = ListFindNoRepo.data_provider()
+      result = DataProvider.filter(data_provider, %{"rem" => 4}, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60]
-      assert result.data.total_count === @list_filtered_total
+      assert data_provider === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.filter(data_provider, @search_params, instant: true)
+      data_provider = ListFindValidRepo.data_provider()
+      result = DataProvider.filter(data_provider, %{"rem" => 4}, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60]
-      assert result.data.total_count === @list_filtered_total
+      assert data_provider === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(%{}, [])
-      result = DataProvider.filter(data_provider, @search_params, instant: true)
+      data_provider = ListFindInvalidRepo.data_provider()
+      result = DataProvider.filter(data_provider, %{"rem" => 4}, instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === @search_params
-      assert result.sort.options === []
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60]
-      assert result.data.total_count === @list_filtered_total
+      assert data_provider === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(%{}, [], init: true)
+        InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(%{}, [], init: true)
+        InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(%{}, [], init: true)
+        InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
       end
     end
   end
 
   describe "`sort/2` instant call |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(%{}, [])
-      result = DataProvider.sort(data_provider, (@options)[:sort], instant: true)
+      data_provider = NoFindNoRepo.data_provider()
+      result = DataProvider.sort(data_provider, [desc: :inserted_at], instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === (@options)[:sort]
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: [desc: :inserted_at]}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.sort(data_provider, (@options)[:sort], instant: true)
+      data_provider = NoFindValidRepo.data_provider()
+      result = DataProvider.sort(data_provider, [desc: :inserted_at], instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === (@options)[:sort]
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: [desc: :inserted_at]}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(%{}, [])
-      result = DataProvider.sort(data_provider, (@options)[:sort], instant: true)
+      data_provider = NoFindInvalidRepo.data_provider()
+      result = DataProvider.sort(data_provider, [desc: :inserted_at], instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === (@options)[:sort]
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === []
-      assert result.data.total_count === 0
+      assert data_provider === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: [desc: :inserted_at]}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(%{}, [], init: true)
+        QueryFindNoRepo.data_provider()
+        |> DataProvider.sort([desc: :inserted_at], instant: true)
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.sort(data_provider, (@options)[:sort], instant: true)
+      data_provider = QueryFindValidRepo.data_provider()
+      result = DataProvider.sort(data_provider, [desc: :inserted_at], instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === (@options)[:sort]
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === @query_filtered_items
-      assert result.data.total_count === @query_filtered_total
+      assert data_provider === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: [desc: :inserted_at]}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(%{}, [], init: true)
+        QueryFindInvalidRepo.data_provider()
+        |> DataProvider.sort([desc: :inserted_at], instant: true)
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(%{}, [])
-      result = DataProvider.sort(data_provider, (@options)[:sort], instant: true)
+      data_provider = ListFindNoRepo.data_provider()
+      result = DataProvider.sort(data_provider, [desc: :inserted_at], instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === (@options)[:sort]
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === @list_default_items
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..15), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: [desc: :inserted_at]}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(%{}, [])
-      result = DataProvider.sort(data_provider, (@options)[:sort], instant: true)
+      data_provider = ListFindValidRepo.data_provider()
+      result = DataProvider.sort(data_provider, [desc: :inserted_at], instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === (@options)[:sort]
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === @list_default_items
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..15), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: [desc: :inserted_at]}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(%{}, [])
-      result = DataProvider.sort(data_provider, (@options)[:sort], instant: true)
+      data_provider = ListFindInvalidRepo.data_provider()
+      result = DataProvider.sort(data_provider, [desc: :inserted_at], instant: true)
 
-      assert match?(%DataProvider{}, result)
-      assert result.search_options.options === %{}
-      assert result.sort.options === (@options)[:sort]
-      assert result.pagination.page === data_provider.pagination.page
-      assert result.pagination.page_size === @default_page_size
-      assert result.data.items === @list_default_items
-      assert result.data.total_count === @list_default_total
+      assert data_provider === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{}
+             }
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..15), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               sort: %DataProvider.Sort{options: [desc: :inserted_at]}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(%{}, [], init: true)
+        InvalidFindNoRepo.data_provider()
+        |> DataProvider.sort([desc: :inserted_at], instant: true)
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(%{}, [], init: true)
+        InvalidFindValidRepo.data_provider()
+        |> DataProvider.sort([desc: :inserted_at], instant: true)
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(%{}, [], init: true)
+        InvalidFindInvalidRepo.data_provider()
+        |> DataProvider.sort([desc: :inserted_at], instant: true)
       end
     end
   end
