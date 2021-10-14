@@ -1,68 +1,83 @@
-defmodule DataProvider.SearchOptionsTEst do
+defmodule DataProvider.SearchOptionsTest do
   use ExUnit.Case
   alias DataProvider.SearchOptions
   doctest DataProvider.SearchOptions
-
-  def fixture(:search_options, _), do: SearchOptions.create()
-  def fixture(:filled_search_options, _), do: SearchOptions.create(%{"random_field" => "random_value"})
-
-
-  defp search_options(params), do: {:ok, search_options: fixture(:search_options, params)}
-  defp filled_search_options(params), do: {:ok, filled_search_options: fixture(:filled_search_options, params)}
-
-  setup [:search_options, :filled_search_options]
 
   describe "`create/1` |" do
     test "test default values" do
       result = SearchOptions.create()
 
-      assert match?(%SearchOptions{}, result)
-      assert result.options === %{}
+      assert result === %SearchOptions{options: %{}}
     end
 
     test "test preset values" do
-      attrs = %{"first_field" => "first_field_value"}
-      result = SearchOptions.create(attrs)
+      result = SearchOptions.create(%{"first_field" => "first_field_value"})
 
-      assert match?(%SearchOptions{}, result)
-      assert result.options === attrs
+      assert result === %SearchOptions{options: %{"first_field" => "first_field_value"}}
     end
   end
 
   describe "`merge_options/2` empty struct |" do
-    test "test empty options", %{search_options: search_options} do
+    test "test empty options", %{} do
+      search_options = %SearchOptions{options: %{}}
       result = SearchOptions.merge_options(search_options, %{})
 
-      assert result.options === search_options.options
+      assert result === %SearchOptions{options: %{}}
     end
 
-    test "test preset values", %{search_options: search_options} do
-      attrs = %{"first_field" => "first_field_value"}
-      result = SearchOptions.merge_options(search_options, attrs)
+    test "test preset values" do
+      search_options = %SearchOptions{options: %{}}
+      result = SearchOptions.merge_options(search_options, %{new_param: "new param value"})
 
-      assert result.options === attrs
+      assert result === %SearchOptions{options: %{new_param: "new param value"}}
     end
   end
 
   describe "`merge_options/2` filled struct |" do
-    test "test empty options", %{filled_search_options: search_options} do
+    test "test empty options", %{} do
+      search_options = %SearchOptions{options: %{some_exist: "some exist"}}
       result = SearchOptions.merge_options(search_options, %{})
 
-      assert result.options === search_options.options
+      assert result === %SearchOptions{options: %{some_exist: "some exist"}}
     end
 
-    test "test preset values", %{filled_search_options: search_options} do
-      attrs = %{"first_field" => "first_field_value"}
-      result = SearchOptions.merge_options(search_options, attrs)
+    test "test preset values" do
+      search_options = %SearchOptions{options: %{some_exist: "some exist"}}
+      result = SearchOptions.merge_options(search_options, %{new_param: "new param value"})
 
-      assert result.options === Map.merge(attrs, search_options.options)
+      assert result === %SearchOptions{options: %{some_exist: "some exist", new_param: "new param value"}}
     end
   end
 
-  test "test `put_options/2`", %{filled_search_options: search_options} do
-    attrs = %{"first_field" => "first_field_value"}
-    result = SearchOptions.put_options(search_options, attrs)
+  describe "`put_options/2` empty struct |" do
+    test "test empty options" do
+      search_options = %SearchOptions{options: %{}}
+      result = SearchOptions.put_options(search_options, %{})
 
-    assert result.options === attrs
+      assert result === %SearchOptions{options: %{}}
+    end
+
+    test "test not empty options" do
+      search_options = %SearchOptions{options: %{}}
+      result = SearchOptions.put_options(search_options, %{"first_field" => "first_field_value"})
+
+      assert result === %SearchOptions{options: %{"first_field" => "first_field_value"}}
+    end
+  end
+
+  describe "`put_options/2` filled struct |" do
+    test "test empty options" do
+      search_options = %SearchOptions{options: %{some_exist: "some exist"}}
+      result = SearchOptions.put_options(search_options, %{})
+
+      assert result === %SearchOptions{options: %{}}
+    end
+
+    test "test not empty options" do
+      search_options = %SearchOptions{options: %{some_exist: "some exist"}}
+      result = SearchOptions.put_options(search_options, %{"first_field" => "first_field_value"})
+
+      assert result === %SearchOptions{options: %{"first_field" => "first_field_value"}}
+    end
   end
 end
