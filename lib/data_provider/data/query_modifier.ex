@@ -6,6 +6,7 @@ defmodule DataProvider.Data.QueryModifier do
 
   alias Ecto.Query
   alias DataProvider.Pagination
+  alias DataProvider.Pagination.Params
   alias DataProvider.Sort
   import Query
 
@@ -23,7 +24,7 @@ defmodule DataProvider.Data.QueryModifier do
   # Set limit for query
   @spec set_limit(Query.t, DataProvider.t) :: Query.t
   defp set_limit(%Query{} = query, %DataProvider{pagination: %Pagination{} = pagination}) do
-    page_size = Pagination.page_size(pagination)
+    page_size = Pagination.selection_limit(pagination)
     limit(query, ^page_size)
   end
 
