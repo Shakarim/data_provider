@@ -18,12 +18,6 @@ defmodule DataProvider.DataTest do
   import Query
   doctest DataProvider.Data
 
-  @data_provider_search_params %{"filter_param_1" => :filter_value_1}
-  @data_provider_options [
-    sort: [asc: :filter_param_1],
-    pagination: %{page: 3, page_size: 4}
-  ]
-
   def fixture(:query, _), do: from(t in TestSchema)
 
 
@@ -33,23 +27,38 @@ defmodule DataProvider.DataTest do
 
   describe "for `Ecto.Query` |" do
     test "test for `NoFindNoRepo`", %{query: query} do
-      data_provider = NoFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: NoFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoNotDefinedError, fn ->
         Data.create(data_provider, query)
       end
     end
     test "test for `NoFindValidRepo`", %{query: query} do
-      data_provider = NoFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: NoFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, query)
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..100), total_count: 1000}
     end
     test "test for `NoFindInvalidRepo`", %{query: query} do
-      data_provider = NoFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: NoFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoCallError, fn ->
         Data.create(data_provider, query)
@@ -57,23 +66,38 @@ defmodule DataProvider.DataTest do
     end
 
     test "test for `QueryFindNoRepo`", %{query: query} do
-      data_provider = QueryFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: QueryFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoNotDefinedError, fn ->
         Data.create(data_provider, query)
       end
     end
     test "test for `QueryFindValidRepo`", %{query: query} do
-      data_provider = QueryFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: QueryFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, query)
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..100), total_count: 1000}
     end
     test "test for `QueryFindInvalidRepo`", %{query: query} do
-      data_provider = QueryFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: QueryFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoCallError, fn ->
         Data.create(data_provider, query)
@@ -81,23 +105,38 @@ defmodule DataProvider.DataTest do
     end
 
     test "test for `ListFindNoRepo`", %{query: query} do
-      data_provider = ListFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: ListFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoNotDefinedError, fn ->
         Data.create(data_provider, query)
       end
     end
     test "test for `ListFindValidRepo`", %{query: query} do
-      data_provider = ListFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: ListFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, query)
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..100), total_count: 1000}
     end
     test "test for `ListFindInvalidRepo`", %{query: query} do
-      data_provider = ListFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: ListFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoCallError, fn ->
         Data.create(data_provider, query)
@@ -105,23 +144,38 @@ defmodule DataProvider.DataTest do
     end
 
     test "test for `InvalidFindNoRepo`", %{query: query} do
-      data_provider = InvalidFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: InvalidFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoNotDefinedError, fn ->
         Data.create(data_provider, query)
       end
     end
     test "test for `InvalidFindValidRepo`", %{query: query} do
-      data_provider = InvalidFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: InvalidFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, query)
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..100), total_count: 1000}
     end
     test "test for `InvalidFindInvalidRepo`", %{query: query} do
-      data_provider = InvalidFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: InvalidFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
 
       assert_raise DataProvider.RepoCallError, fn ->
         Data.create(data_provider, query)
@@ -131,115 +185,151 @@ defmodule DataProvider.DataTest do
 
   describe "for list |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = NoFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: NoFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = NoFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: NoFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = NoFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: NoFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
 
     test "test for `QueryFindNoRepo`" do
-      data_provider = QueryFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: QueryFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = QueryFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: QueryFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `QueryFindInvalidRepo`" do
-      data_provider = QueryFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: QueryFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = ListFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: ListFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = ListFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: ListFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = ListFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: ListFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
 
     test "test for `InvalidFindNoRepo`" do
-      data_provider = InvalidFindNoRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: InvalidFindNoRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `InvalidFindValidRepo`" do
-      data_provider = InvalidFindValidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: InvalidFindValidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
     test "test for `InvalidFindInvalidRepo`" do
-      data_provider = InvalidFindInvalidRepo.data_provider(@data_provider_search_params, @data_provider_options)
+      data_provider = %DataProvider{
+        module: InvalidFindInvalidRepo,
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       result = Data.create(data_provider, Enum.to_list(1..10))
 
-      assert match?(%Data{}, result)
-      assert result
-             |> Map.get(:items, [])
-             |> Enum.count() > 0
+      assert result === %Data{items: Enum.to_list(1..10), total_count: 10}
     end
   end
 
@@ -251,8 +341,14 @@ defmodule DataProvider.DataTest do
     end
 
     test "test for invalid second argument" do
+      data_provider = %DataProvider{
+        data: %DataProvider.Data{items: [], total_count: 0},
+        search_options: %DataProvider.SearchOptions{options: %{"some_filter" => :some_filter_value}},
+        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+        sort: %DataProvider.Sort{options: []}
+      }
       assert_raise FunctionClauseError, fn ->
-        Data.create(DataProvider.create(@data_provider_search_params, @data_provider_options), :wrong_data)
+        Data.create(data_provider, :wrong_data)
       end
     end
   end
