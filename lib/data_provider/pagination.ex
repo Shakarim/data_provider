@@ -4,11 +4,13 @@ defmodule DataProvider.Pagination do
   pages in `DataProvider`.
   """
 
+  alias DataProvider.Pagination.Page
+  alias DataProvider.Pagination.Params
+
   @default_page 1
-  @default_page_size 15
 
   defstruct page: @default_page,
-            page_size: @default_page_size
+            params: %Params{}
 
   @typedoc ~S"""
   Schema of `DataProvider.Pagination`.
@@ -22,25 +24,18 @@ defmodule DataProvider.Pagination do
   """
   @type t() :: %__MODULE__{
                  page: integer(),
-                 page_size: integer()
+                 params: Params.t
                }
 
   @doc ~S"""
   Creates new `DataProvider.Pagination` struct with received params.
-
-  By default, fields will be:
-
-    * `page` - @default_page
-
-    * `page_size` - @default_page_size
-
   """
   @spec create(map()) :: __MODULE__.t
   def create(params \\ %{})
   def create(params) when is_map(params) do
     %__MODULE__{}
     |> put_page(Map.get(params, :page, @default_page))
-    |> put_page_size(Map.get(params, :page_size, @default_page_size))
+    |> put_params(Map.get(params, :params, %{}))
   end
 
   @doc ~S"""
@@ -50,24 +45,16 @@ defmodule DataProvider.Pagination do
   def page(%__MODULE__{page: page}) when is_integer(page), do: page
 
   @doc ~S"""
-  Returns size of page in current `DataProvider.Pagination` of `DataProvider`
-  """
-  @spec page_size(__MODULE__.t) :: integer()
-  def page_size(%__MODULE__{page_size: page_size}) when is_integer(page_size), do: page_size
-
-  @doc ~S"""
   Changes the value of field `page`
   """
   @spec put_page(__MODULE__.t, integer()) :: __MODULE__.t
-  def put_page(%__MODULE__{} = pagination, page) when is_integer(page),
-      do: %{pagination | page: page}
+  def put_page(%__MODULE__{} = pagination, page) when is_integer(page), do: %{pagination | page: page}
 
   @doc ~S"""
   Changes the value of field `page_size`
   """
-  @spec put_page_size(__MODULE__.t, integer()) :: __MODULE__.t
-  def put_page_size(%__MODULE__{} = pagination, page_size) when is_integer(page_size),
-      do: %{pagination | page_size: page_size}
+  @spec put_params(__MODULE__.t, map()) :: __MODULE__.t
+  def put_params(%__MODULE__{} = schema, params) when is_map(params), do: %{schema | params: Params.create(params)}
 
   @doc ~S"""
   Calculates starting position for received pagination.
@@ -89,7 +76,7 @@ defmodule DataProvider.Pagination do
   Returns count of items, which gonna be put load into `DataProvider.Data`
   """
   @spec selection_limit(__MODULE__.t) :: integer()
-  def selection_limit(%__MODULE__{} = pagination), do: page_size(pagination)
+  def selection_limit(%__MODULE__{params: %Params{} = params}), do: Params.page_size(params)
 
   @doc ~S"""
   Calculates end position for received pagination.
@@ -105,5 +92,41 @@ defmodule DataProvider.Pagination do
     else
       _ -> 0
     end
+  end
+
+  @doc ~S"""
+  Creates list of `DataProvider.Pagination.Page` by received total count and current page.
+
+  ## Arguments
+
+    1. Total count of items
+
+    2. Current page number
+
+    3. Options keyword
+
+  ## Returns
+
+      [
+        ...
+        %DataProvider.Pagination.Page{},
+        %DataProvider.Pagination.Page{},
+        %DataProvider.Pagination.Page{},
+        ...
+      ]
+
+  ## Options
+
+    `:pages_ahead` - The maximum count of pages, which will be loaded ahead of current position.
+
+    `:pages_behind` - The maximum count of pages, which will be loaded behind of current position.
+
+    `:load_first_page?` - Boolean value which indicates requirement of loading the first page in list.
+
+    `:load_last_page?` - Boolean value which indicates requirement of loading the last page in list.
+
+  """
+  def create_page_list(total_count, current_page, opts \\ []) when is_integer(total_count) and is_integer(current_page) do
+
   end
 end
