@@ -29,11 +29,9 @@ defmodule DataProvider.TestImpl do
             quote do
               import Ecto.Query
 
-              @result Enum.to_list(1..1000)
-
               def find(%DataProvider{search_options: %{options: %{"rem" => rem}}}) when is_integer(rem),
-                  do: Enum.filter(@result, &(rem(&1, rem) == 0))
-              def find(%DataProvider{}), do: @result
+                  do: Enum.to_list(1001..2000)
+              def find(%DataProvider{}), do: Enum.to_list(1..1000)
             end
           :invalid ->
             quote do
