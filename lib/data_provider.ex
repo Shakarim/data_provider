@@ -102,7 +102,9 @@ defmodule DataProvider do
         },
         pagination: %DataProvider.Pagination{
           page: 2,
-          page_size: 15
+          params: %DataProvider.Pagination.Params{
+            page_size: 15
+          }
         }
       }
 
