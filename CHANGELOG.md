@@ -1,5 +1,11 @@
 # Changelog for v1.x
 
+## 1.2.0 (2021-10-14)
+
+### Enhancements
+
+* Set `:params` field of `DataProvider.Pagination` as independent module `DataProvider.Pagination.Params`
+
 ## 1.1.0 (2021-10-11)
 
 ### Bug fixes
