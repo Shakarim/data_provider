@@ -1,21 +1,18 @@
 defmodule DataProvider.TestModules do
-  @doc """
-  ## Alias examples
+  @doc false
 
-      alias DataProvider.TestModules.NoFindNoRepo
-      alias DataProvider.TestModules.NoFindValidRepo
-      alias DataProvider.TestModules.NoFindInvalidRepo
-      alias DataProvider.TestModules.QueryFindNoRepo
-      alias DataProvider.TestModules.QueryFindValidRepo
-      alias DataProvider.TestModules.QueryFindInvalidRepo
-      alias DataProvider.TestModules.ListFindNoRepo
-      alias DataProvider.TestModules.ListFindValidRepo
-      alias DataProvider.TestModules.ListFindInvalidRepo
-      alias DataProvider.TestModules.InvalidFindNoRepo
-      alias DataProvider.TestModules.InvalidFindValidRepo
-      alias DataProvider.TestModules.InvalidFindInvalidRepo
-
-  """
+  # alias DataProvider.TestModules.NoFindNoRepo
+  # alias DataProvider.TestModules.NoFindValidRepo
+  # alias DataProvider.TestModules.NoFindInvalidRepo
+  # alias DataProvider.TestModules.QueryFindNoRepo
+  # alias DataProvider.TestModules.QueryFindValidRepo
+  # alias DataProvider.TestModules.QueryFindInvalidRepo
+  # alias DataProvider.TestModules.ListFindNoRepo
+  # alias DataProvider.TestModules.ListFindValidRepo
+  # alias DataProvider.TestModules.ListFindInvalidRepo
+  # alias DataProvider.TestModules.InvalidFindNoRepo
+  # alias DataProvider.TestModules.InvalidFindValidRepo
+  # alias DataProvider.TestModules.InvalidFindInvalidRepo
 
   defmodule NoFindNoRepo do
     use DataProvider.TestImpl
