@@ -16,53 +16,77 @@ defmodule DataProvider.SortTest do
     test "test default values" do
       result = Sort.create()
 
-      assert match?(%Sort{}, result)
-      assert result.options === []
+      assert result === %Sort{options: []}
     end
 
     test "test preset values" do
-      attrs = [asc: "field"]
-      result = Sort.create(attrs)
+      result = Sort.create(asc: "field")
 
-      assert match?(%Sort{}, result)
-      assert result.options === attrs
+      assert result === %Sort{options: [asc: "field"]}
     end
   end
 
   describe "`merge_options/2` empty struct |" do
-    test "test empty options", %{sort: sort} do
+    test "test empty options" do
+      sort = %Sort{options: []}
       result = Sort.merge_options(sort, [])
 
-      assert result.options === sort.options
+      assert result === %Sort{options: []}
     end
 
-    test "test preset values", %{sort: sort} do
-      attrs = [asc: :new_field]
-      result = Sort.merge_options(sort, attrs)
+    test "test not empty options" do
+      sort = %Sort{options: []}
+      result = Sort.merge_options(sort, asc: :new_field)
 
-      assert result.options === attrs
+      assert result === %Sort{options: [asc: :new_field]}
     end
   end
 
   describe "`merge_options/2` filled struct |" do
-    test "test empty options", %{filled_sort: sort} do
+    test "test empty options" do
+      sort = %Sort{options: [asc: :old_field]}
       result = Sort.merge_options(sort, [])
 
-      assert result.options === sort.options
+      assert result === %Sort{options: [asc: :old_field]}
     end
 
-    test "test preset values", %{filled_sort: sort} do
-      attrs = [asc: :some_field]
-      result = Sort.merge_options(sort, attrs)
+    test "test not empty options" do
+      sort = %Sort{options: [asc: :old_fields]}
+      result = Sort.merge_options(sort, desc: :new_fields)
 
-      assert result.options === [desc: "inserted_at", asc: :some_field]
+      assert result === %Sort{options: [asc: :old_fields, desc: :new_fields]}
     end
   end
 
-  test "test `put_options/2`", %{filled_sort: sort} do
-    attrs = [desc: :new_values]
-    result = Sort.put_options(sort, attrs)
+  describe "`put_options/2` empty struct |" do
+    test "test empty options" do
+      sort = %Sort{options: []}
+      result = Sort.put_options(sort, [])
 
-    assert result.options === attrs
+      assert result === %Sort{options: []}
+    end
+
+    test "test not empty options" do
+      sort = %Sort{options: []}
+      result = Sort.put_options(sort, [asc: :putted_option])
+
+      assert result === %Sort{options: [asc: :putted_option]}
+    end
+  end
+
+  describe "`put_options/2` filled struct |" do
+    test "test empty options" do
+      sort = %Sort{options: [desc: :exist_option]}
+      result = Sort.put_options(sort, [])
+
+      assert result === %Sort{options: []}
+    end
+
+    test "test not empty options" do
+      sort = %Sort{options: [desc: :exist_option]}
+      result = Sort.put_options(sort, [asc: :putted_option])
+
+      assert result === %Sort{options: [asc: :putted_option]}
+    end
   end
 end
