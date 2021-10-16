@@ -1,4 +1,4 @@
-defmodule DataProvider.ParamsTest do
+defmodule DataProvider.Pagination.ParamsTest do
   use ExUnit.Case
   alias DataProvider.Pagination.Params
   doctest DataProvider.Pagination.Params
