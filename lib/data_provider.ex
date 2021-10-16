@@ -272,7 +272,11 @@ defmodule DataProvider do
   a resources.
   """
   @spec init(DataProvider.t) :: DataProvider.t
-  def init(%DataProvider{} = data_provider), do: load_data(data_provider)
+  def init(%DataProvider{} = data_provider) do
+    data_provider
+    |> load_data()
+    |> load_pages()
+  end
 
   @doc ~S"""
   Reloads dataprovider. Required for stateful data providers.
@@ -391,4 +395,12 @@ defmodule DataProvider do
   # Load data and define it in `DataProvider` by user implementation of dataprovider
   @spec load_data(DataProvider.t) :: DataProvider.t
   defp load_data(%DataProvider{} = data_provider), do: Loader.load(data_provider)
+
+  # Reloads pages in `:pagination` of `DataProvider` and calculate visible
+  @spec load_pages(DataProvider.t) :: DataProvider.t
+  defp load_pages(%DataProvider{data: %Data{total_count: count}, pagination: %Pagination{} = pagination} = data_provider)
+      when is_integer(count) do
+    pagination = Pagination.create_page_list(pagination, count)
+    %{data_provider | pagination: pagination}
+  end
 end

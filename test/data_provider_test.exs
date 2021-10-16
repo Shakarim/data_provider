@@ -214,7 +214,18 @@ defmodule DataProviderTest do
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -225,7 +236,18 @@ defmodule DataProviderTest do
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -236,7 +258,18 @@ defmodule DataProviderTest do
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -248,7 +281,18 @@ defmodule DataProviderTest do
                module: QueryFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -259,7 +303,18 @@ defmodule DataProviderTest do
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -270,7 +325,18 @@ defmodule DataProviderTest do
                module: QueryFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -282,7 +348,18 @@ defmodule DataProviderTest do
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -293,7 +370,18 @@ defmodule DataProviderTest do
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -304,7 +392,18 @@ defmodule DataProviderTest do
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -316,7 +415,18 @@ defmodule DataProviderTest do
                module: InvalidFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -327,7 +437,18 @@ defmodule DataProviderTest do
                module: InvalidFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -338,7 +459,18 @@ defmodule DataProviderTest do
                module: InvalidFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -346,550 +478,1514 @@ defmodule DataProviderTest do
 
   describe "`data_provider` of implementation with no default arguments |" do
     test "test for `NoFindNoRepo`" do
-      result = NoFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = NoFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `NoFindValidRepo`" do
-      result = NoFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = NoFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `NoFindInvalidRepo`" do
-      result = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = NoFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 pages: [],
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 }
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
 
     test "test for `QueryFindNoRepo`" do
-      result = QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = QueryFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: QueryFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `QueryFindValidRepo`" do
-      result = QueryFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = QueryFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `QueryFindInvalidRepo`" do
-      result = QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = QueryFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: QueryFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
 
     test "test for `ListFindNoRepo`" do
-      result = ListFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = ListFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `ListFindValidRepo`" do
-      result = ListFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = ListFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `ListFindInvalidRepo`" do
-      result = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = ListFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
 
     test "test for `InvalidFindNoRepo`" do
-      result = InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = InvalidFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: InvalidFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `InvalidFindValidRepo`" do
-      result = InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = InvalidFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: InvalidFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
     test "test for `InvalidFindInvalidRepo`" do
-      result = InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = InvalidFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
       assert result === %DataProvider{
                module: InvalidFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
              }
     end
   end
 
-  describe "`data_provider` of implementation with no default arguments (auto init) |" do
+  describe "`data_provider` of implementation with default arguments (auto init) |" do
     test "test for `NoFindNoRepo`" do
-      data_provider = %DataProvider{
-        module: NoFindNoRepo,
-        data: %DataProvider.Data{items: [], total_count: 0},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = NoFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+      result = NoFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20
+            }
+          }
+        ],
+        init: true
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `NoFindValidRepo`" do
-      data_provider = %DataProvider{
-        module: NoFindValidRepo,
-        data: %DataProvider.Data{items: [], total_count: 0},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = NoFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+      result = NoFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20
+            }
+          }
+        ],
+        init: true
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `NoFindInvalidRepo`" do
-      data_provider = %DataProvider{
-        module: NoFindInvalidRepo,
-        data: %DataProvider.Data{items: [], total_count: 0},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+      result = NoFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20
+            }
+          }
+        ],
+        init: true
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
 
     test "test for `QueryFindNoRepo`" do
       assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+        QueryFindNoRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20
+              }
+            }
+          ],
+          init: true
+        )
       end
     end
     test "test for `QueryFindValidRepo`" do
-      data_provider = %DataProvider{
-        module: QueryFindValidRepo,
-        data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = QueryFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+      result = QueryFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20
+            }
+          }
+        ],
+        init: true
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 50, title: "50", type: :last}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+        QueryFindInvalidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20
+              }
+            }
+          ],
+          init: true
+        )
       end
     end
 
     test "test for `ListFindNoRepo`" do
-      data_provider = %DataProvider{
-        module: ListFindNoRepo,
-        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = ListFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+      result = ListFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20
+            }
+          }
+        ],
+        init: true
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 50, title: "50", type: :last}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `ListFindValidRepo`" do
-      data_provider = %DataProvider{
-        module: ListFindValidRepo,
-        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = ListFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+      result = ListFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20
+            }
+          }
+        ],
+        init: true
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 50, title: "50", type: :last}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
     test "test for `ListFindInvalidRepo`" do
-      data_provider = %DataProvider{
-        module: ListFindInvalidRepo,
-        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+      result = ListFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20
+            }
+          }
+        ],
+        init: true
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 50, title: "50", type: :last},
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+        InvalidFindNoRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20
+              }
+            }
+          ],
+          init: true
+        )
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+        InvalidFindValidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20
+              }
+            }
+          ],
+          init: true
+        )
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}], init: true)
+        InvalidFindInvalidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20
+              }
+            }
+          ],
+          init: true
+        )
+      end
+    end
+  end
+
+  describe "`data_provider` of implementation with no default arguments (auto init) |" do
+    test "test for `NoFindNoRepo`" do
+      result = NoFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ],
+        init: true
+      )
+
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `NoFindValidRepo`" do
+      result = NoFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ],
+        init: true
+      )
+
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `NoFindInvalidRepo`" do
+      result = NoFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ],
+        init: true
+      )
+
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+
+    test "test for `QueryFindNoRepo`" do
+      assert_raise DataProvider.RepoNotDefinedError, fn ->
+        QueryFindNoRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ],
+          init: true
+        )
+      end
+    end
+    test "test for `QueryFindValidRepo`" do
+      result = QueryFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ],
+        init: true
+      )
+
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `QueryFindInvalidRepo`" do
+      assert_raise DataProvider.RepoCallError, fn ->
+        QueryFindInvalidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ],
+          init: true
+        )
+      end
+    end
+
+    test "test for `ListFindNoRepo`" do
+      result = ListFindNoRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ],
+        init: true
+      )
+
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `ListFindValidRepo`" do
+      result = ListFindValidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ],
+        init: true
+      )
+
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `ListFindInvalidRepo`" do
+      result = ListFindInvalidRepo.data_provider(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ],
+        init: true
+      )
+
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+
+    test "test for `InvalidFindNoRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindNoRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ],
+          init: true
+        )
+      end
+    end
+    test "test for `InvalidFindValidRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindValidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ],
+          init: true
+        )
+      end
+    end
+    test "test for `InvalidFindInvalidRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindInvalidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ],
+          init: true
+        )
       end
     end
   end
 
   describe "`create/2` |" do
     test "test default arguments" do
-      data_provider = %DataProvider{
-        module: :not_implemented,
-        data: %DataProvider.Data{items: [], total_count: 0},
-        search_options: %DataProvider.SearchOptions{options: %{}},
-        pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-        sort: %DataProvider.Sort{options: []}
-      }
       result = DataProvider.create()
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: :not_implemented,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
     end
 
     test "test with no default arguments" do
-      data_provider = %DataProvider{
-        module: :not_implemented,
-        data: %DataProvider.Data{items: [], total_count: 0},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-      result = DataProvider.create(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
+      result = DataProvider.create(
+        %{"rem" => 4},
+        [
+          sort: [
+            asc: :filter_param_1
+          ],
+          pagination: %{
+            page: 10,
+            params: %{
+              page_size: 20,
+              pages_ahead: 2,
+              pages_behind: 2,
+              load_first_page?: false,
+              load_last_page?: false,
+              load_opening_separator?: false,
+              load_closing_separator?: false
+            }
+          }
+        ]
+      )
 
-      assert data_provider === result
+      assert result === %DataProvider{
+               module: :not_implemented,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: []
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
     end
   end
 
   describe "`init/1` dataprovider with default arguments |" do
     test "test for `NoFindNoRepo`" do
       result = NoFindNoRepo.data_provider()
-               |>  DataProvider.init()
+               |> DataProvider.init()
 
       assert result === %DataProvider{
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
     test "test for `NoFindValidRepo`" do
       result = NoFindValidRepo.data_provider()
-               |>  DataProvider.init()
+               |> DataProvider.init()
 
       assert result === %DataProvider{
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
     test "test for `NoFindInvalidRepo`" do
       result = NoFindInvalidRepo.data_provider()
-               |>  DataProvider.init()
+               |> DataProvider.init()
 
       assert result === %DataProvider{
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-               sort: %DataProvider.Sort{options: []}
-             }
-    end
-
-    test "test for `QueryFindNoRepo`" do
-      assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider() |>  DataProvider.init()
-      end
-    end
-    test "test for `QueryFindValidRepo`" do
-      result = QueryFindValidRepo.data_provider()
-               |>  DataProvider.init()
-
-      assert result === %DataProvider{
-               module: QueryFindValidRepo,
-               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
-               search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-               sort: %DataProvider.Sort{options: []}
-             }
-    end
-    test "test for `QueryFindInvalidRepo`" do
-      assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider()
-        |>  DataProvider.init()
-      end
-    end
-
-    test "test for `ListFindNoRepo`" do
-      result = ListFindNoRepo.data_provider()
-                      |>  DataProvider.init()
-
-      assert result === %DataProvider{
-               module: ListFindNoRepo,
-               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
-               search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-               sort: %DataProvider.Sort{options: []}
-             }
-    end
-    test "test for `ListFindValidRepo`" do
-      result = ListFindValidRepo.data_provider()
-                      |>  DataProvider.init()
-
-      assert result === %DataProvider{
-               module: ListFindValidRepo,
-               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
-               search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-               sort: %DataProvider.Sort{options: []}
-             }
-    end
-    test "test for `ListFindInvalidRepo`" do
-      result = ListFindInvalidRepo.data_provider()
-                      |>  DataProvider.init()
-
-      assert result === %DataProvider{
-               module: ListFindInvalidRepo,
-               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
-               search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-               sort: %DataProvider.Sort{options: []}
-             }
-    end
-
-    test "test for `InvalidFindNoRepo`" do
-      assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider() |>  DataProvider.init()
-      end
-    end
-    test "test for `InvalidFindValidRepo`" do
-      assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider() |>  DataProvider.init()
-      end
-    end
-    test "test for `InvalidFindInvalidRepo`" do
-      assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider() |>  DataProvider.init()
-      end
-    end
-  end
-
-  describe "`init/1` with no default arguments |" do
-    test "test for `NoFindNoRepo`" do
-      result = NoFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
-               |> DataProvider.init()
-
-      assert result === %DataProvider{
-               module: NoFindNoRepo,
-               data: %DataProvider.Data{items: [], total_count: 0},
-               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-             }
-    end
-    test "test for `NoFindValidRepo`" do
-      result = NoFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
-                      |> DataProvider.init()
-
-      assert result === %DataProvider{
-               module: NoFindValidRepo,
-               data: %DataProvider.Data{items: [], total_count: 0},
-               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-             }
-    end
-    test "test for `NoFindInvalidRepo`" do
-      result = NoFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
-                      |> DataProvider.init()
-
-      assert result === %DataProvider{
-               module: NoFindInvalidRepo,
-               data: %DataProvider.Data{items: [], total_count: 0},
-               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-             }
-    end
-
-    test "test for `QueryFindNoRepo`" do
-      assert_raise DataProvider.RepoNotDefinedError, fn ->
-        QueryFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
-      end
-    end
-    test "test for `QueryFindValidRepo`" do
-      result = QueryFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
-               |> DataProvider.init()
-
-      assert result === %DataProvider{
-               module: QueryFindValidRepo,
-               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
-               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-             }
-    end
-    test "test for `QueryFindInvalidRepo`" do
-      assert_raise DataProvider.RepoCallError, fn ->
-        QueryFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
-      end
-    end
-
-    test "test for `ListFindNoRepo`" do
-      result = ListFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
-               |> DataProvider.init()
-
-      assert result === %DataProvider{
-        module: ListFindNoRepo,
-        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-    end
-    test "test for `ListFindValidRepo`" do
-      result = ListFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
-               |> DataProvider.init()
-
-      assert result === %DataProvider{
-        module: ListFindValidRepo,
-        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-    end
-    test "test for `ListFindInvalidRepo`" do
-      result = ListFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}])
-               |> DataProvider.init()
-
-      assert result === %DataProvider{
-        module: ListFindInvalidRepo,
-        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
-        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-        pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 20}},
-        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
-      }
-    end
-
-    test "test for `InvalidFindNoRepo`" do
-      assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
-      end
-    end
-    test "test for `InvalidFindValidRepo`" do
-      assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
-      end
-    end
-    test "test for `InvalidFindInvalidRepo`" do
-      assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider(%{"rem" => 4}, [sort: [asc: :filter_param_1], pagination: %{page: 10, params: %{page_size: 20}}]) |> DataProvider.init()
-      end
-    end
-  end
-
-  describe "`reload/1` |" do
-    test "test for `NoFindNoRepo`" do
-      result = NoFindNoRepo.data_provider()
-               |>  DataProvider.reload()
-
-      assert result === %DataProvider{
-               module: NoFindNoRepo,
-               data: %DataProvider.Data{items: [], total_count: 0},
-               search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-               sort: %DataProvider.Sort{options: []}
-             }
-    end
-    test "test for `NoFindValidRepo`" do
-      result = NoFindValidRepo.data_provider()
-               |>  DataProvider.reload()
-
-      assert result === %DataProvider{
-               module: NoFindValidRepo,
-               data: %DataProvider.Data{items: [], total_count: 0},
-               search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
-               sort: %DataProvider.Sort{options: []}
-             }
-    end
-    test "test for `NoFindInvalidRepo`" do
-      result = NoFindInvalidRepo.data_provider()
-               |>  DataProvider.reload()
-
-      assert result === %DataProvider{
-               module: NoFindInvalidRepo,
-               data: %DataProvider.Data{items: [], total_count: 0},
-               search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
@@ -902,73 +1998,834 @@ defmodule DataProviderTest do
     end
     test "test for `QueryFindValidRepo`" do
       result = QueryFindValidRepo.data_provider()
-               |>  DataProvider.reload()
+               |> DataProvider.init()
 
       assert result === %DataProvider{
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
     test "test for `QueryFindInvalidRepo`" do
       assert_raise DataProvider.RepoCallError, fn ->
         QueryFindInvalidRepo.data_provider()
-        |>  DataProvider.init()
+        |> DataProvider.init()
       end
     end
 
     test "test for `ListFindNoRepo`" do
       result = ListFindNoRepo.data_provider()
-               |>  DataProvider.reload()
+               |> DataProvider.init()
 
       assert result === %DataProvider{
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
     test "test for `ListFindValidRepo`" do
       result = ListFindValidRepo.data_provider()
-               |>  DataProvider.reload()
+               |> DataProvider.init()
 
       assert result === %DataProvider{
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
     test "test for `ListFindInvalidRepo`" do
       result = ListFindInvalidRepo.data_provider()
-               |>  DataProvider.reload()
+               |> DataProvider.init()
 
       assert result === %DataProvider{
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: []}
              }
     end
 
     test "test for `InvalidFindNoRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindNoRepo.data_provider() |>  DataProvider.init()
+        InvalidFindNoRepo.data_provider()
+        |> DataProvider.init()
       end
     end
     test "test for `InvalidFindValidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindValidRepo.data_provider() |>  DataProvider.init()
+        InvalidFindValidRepo.data_provider()
+        |> DataProvider.init()
       end
     end
     test "test for `InvalidFindInvalidRepo`" do
       assert_raise DataProvider.UndefinedFindResultError, fn ->
-        InvalidFindInvalidRepo.data_provider() |>  DataProvider.init()
+        InvalidFindInvalidRepo.data_provider()
+        |> DataProvider.init()
+      end
+    end
+  end
+
+  describe "`init/1` with no default arguments |" do
+    test "test for `NoFindNoRepo`" do
+      result = NoFindNoRepo.data_provider(
+                 %{"rem" => 4},
+                 [
+                   sort: [
+                     asc: :filter_param_1
+                   ],
+                   pagination: %{
+                     page: 10,
+                     params: %{
+                       page_size: 20,
+                       pages_ahead: 2,
+                       pages_behind: 2,
+                       load_first_page?: false,
+                       load_last_page?: false,
+                       load_opening_separator?: false,
+                       load_closing_separator?: false
+                     }
+                   }
+                 ]
+               )
+               |> DataProvider.init()
+
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 }
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `NoFindValidRepo`" do
+      result = NoFindValidRepo.data_provider(
+                 %{"rem" => 4},
+                 [
+                   sort: [
+                     asc: :filter_param_1
+                   ],
+                   pagination: %{
+                     page: 10,
+                     params: %{
+                       page_size: 20,
+                       pages_ahead: 2,
+                       pages_behind: 2,
+                       load_first_page?: false,
+                       load_last_page?: false,
+                       load_opening_separator?: false,
+                       load_closing_separator?: false
+                     }
+                   }
+                 ]
+               )
+               |> DataProvider.init()
+
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 }
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `NoFindInvalidRepo`" do
+      result = NoFindInvalidRepo.data_provider(
+                 %{"rem" => 4},
+                 [
+                   sort: [
+                     asc: :filter_param_1
+                   ],
+                   pagination: %{
+                     page: 10,
+                     params: %{
+                       page_size: 20,
+                       pages_ahead: 2,
+                       pages_behind: 2,
+                       load_first_page?: false,
+                       load_last_page?: false,
+                       load_opening_separator?: false,
+                       load_closing_separator?: false
+                     }
+                   }
+                 ]
+               )
+               |> DataProvider.init()
+
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 }
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+
+    test "test for `QueryFindNoRepo`" do
+      assert_raise DataProvider.RepoNotDefinedError, fn ->
+        QueryFindNoRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ]
+        )
+        |> DataProvider.init()
+      end
+    end
+    test "test for `QueryFindValidRepo`" do
+      result = QueryFindValidRepo.data_provider(
+                 %{"rem" => 4},
+                 [
+                   sort: [
+                     asc: :filter_param_1
+                   ],
+                   pagination: %{
+                     page: 10,
+                     params: %{
+                       page_size: 20,
+                       pages_ahead: 2,
+                       pages_behind: 2,
+                       load_first_page?: false,
+                       load_last_page?: false,
+                       load_opening_separator?: false,
+                       load_closing_separator?: false
+                     }
+                   }
+                 ]
+               )
+               |> DataProvider.init()
+
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 20,
+                   pages_ahead: 2,
+                   pages_behind: 2,
+                   load_first_page?: false,
+                   load_last_page?: false,
+                   load_opening_separator?: false,
+                   load_closing_separator?: false
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+             }
+    end
+    test "test for `QueryFindInvalidRepo`" do
+      assert_raise DataProvider.RepoCallError, fn ->
+        QueryFindInvalidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ]
+        )
+        |> DataProvider.init()
+      end
+    end
+
+    test "test for `ListFindNoRepo`" do
+      result = ListFindNoRepo.data_provider(
+                 %{"rem" => 4},
+                 [
+                   sort: [
+                     asc: :filter_param_1
+                   ],
+                   pagination: %{
+                     page: 10,
+                     params: %{
+                       page_size: 20,
+                       pages_ahead: 2,
+                       pages_behind: 2,
+                       load_first_page?: false,
+                       load_last_page?: false,
+                       load_opening_separator?: false,
+                       load_closing_separator?: false
+                     }
+                   }
+                 ]
+               )
+               |> DataProvider.init()
+
+      assert result === %DataProvider{
+        module: ListFindNoRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{
+          page: 10,
+          params: %DataProvider.Pagination.Params{
+            page_size: 20,
+            pages_ahead: 2,
+            pages_behind: 2,
+            load_first_page?: false,
+            load_last_page?: false,
+            load_opening_separator?: false,
+            load_closing_separator?: false
+          },
+          pages: [
+            %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+            %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+          ]
+        },
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+    end
+    test "test for `ListFindValidRepo`" do
+      result = ListFindValidRepo.data_provider(
+                 %{"rem" => 4},
+                 [
+                   sort: [
+                     asc: :filter_param_1
+                   ],
+                   pagination: %{
+                     page: 10,
+                     params: %{
+                       page_size: 20,
+                       pages_ahead: 2,
+                       pages_behind: 2,
+                       load_first_page?: false,
+                       load_last_page?: false,
+                       load_opening_separator?: false,
+                       load_closing_separator?: false
+                     }
+                   }
+                 ]
+               )
+               |> DataProvider.init()
+
+      assert result === %DataProvider{
+        module: ListFindValidRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{
+          page: 10,
+          params: %DataProvider.Pagination.Params{
+            page_size: 20,
+            pages_ahead: 2,
+            pages_behind: 2,
+            load_first_page?: false,
+            load_last_page?: false,
+            load_opening_separator?: false,
+            load_closing_separator?: false
+          },
+          pages: [
+            %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+            %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+          ]
+        },
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+    end
+    test "test for `ListFindInvalidRepo`" do
+      result = ListFindInvalidRepo.data_provider(
+                 %{"rem" => 4},
+                 [
+                   sort: [
+                     asc: :filter_param_1
+                   ],
+                   pagination: %{
+                     page: 10,
+                     params: %{
+                       page_size: 20,
+                       pages_ahead: 2,
+                       pages_behind: 2,
+                       load_first_page?: false,
+                       load_last_page?: false,
+                       load_opening_separator?: false,
+                       load_closing_separator?: false
+                     }
+                   }
+                 ]
+               )
+               |> DataProvider.init()
+
+      assert result === %DataProvider{
+        module: ListFindInvalidRepo,
+        data: %DataProvider.Data{items: Enum.to_list(1181..1200), total_count: 1000},
+        search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
+        pagination: %DataProvider.Pagination{
+          page: 10,
+          params: %DataProvider.Pagination.Params{
+            page_size: 20,
+            pages_ahead: 2,
+            pages_behind: 2,
+            load_first_page?: false,
+            load_last_page?: false,
+            load_opening_separator?: false,
+            load_closing_separator?: false
+          },
+          pages: [
+            %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+            %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular}
+          ]
+                                          },
+        sort: %DataProvider.Sort{options: [asc: :filter_param_1]}
+      }
+    end
+
+    test "test for `InvalidFindNoRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindNoRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ]
+        )
+        |> DataProvider.init()
+      end
+    end
+    test "test for `InvalidFindValidRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindValidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ]
+        )
+        |> DataProvider.init()
+      end
+    end
+    test "test for `InvalidFindInvalidRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindInvalidRepo.data_provider(
+          %{"rem" => 4},
+          [
+            sort: [
+              asc: :filter_param_1
+            ],
+            pagination: %{
+              page: 10,
+              params: %{
+                page_size: 20,
+                pages_ahead: 2,
+                pages_behind: 2,
+                load_first_page?: false,
+                load_last_page?: false,
+                load_opening_separator?: false,
+                load_closing_separator?: false
+              }
+            }
+          ]
+        )
+        |> DataProvider.init()
+      end
+    end
+  end
+
+  describe "`reload/1` |" do
+    test "test for `NoFindNoRepo`" do
+      result = NoFindNoRepo.data_provider()
+               |> DataProvider.reload()
+
+      assert result === %DataProvider{
+               module: NoFindNoRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
+    end
+    test "test for `NoFindValidRepo`" do
+      result = NoFindValidRepo.data_provider()
+               |> DataProvider.reload()
+
+      assert result === %DataProvider{
+               module: NoFindValidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
+    end
+    test "test for `NoFindInvalidRepo`" do
+      result = NoFindInvalidRepo.data_provider()
+               |> DataProvider.reload()
+
+      assert result === %DataProvider{
+               module: NoFindInvalidRepo,
+               data: %DataProvider.Data{items: [], total_count: 0},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
+    end
+
+    test "test for `QueryFindNoRepo`" do
+      assert_raise DataProvider.RepoNotDefinedError, fn ->
+        QueryFindNoRepo.data_provider()
+        |> DataProvider.init()
+      end
+    end
+    test "test for `QueryFindValidRepo`" do
+      result = QueryFindValidRepo.data_provider()
+               |> DataProvider.reload()
+
+      assert result === %DataProvider{
+               module: QueryFindValidRepo,
+               data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
+    end
+    test "test for `QueryFindInvalidRepo`" do
+      assert_raise DataProvider.RepoCallError, fn ->
+        QueryFindInvalidRepo.data_provider()
+        |> DataProvider.init()
+      end
+    end
+
+    test "test for `ListFindNoRepo`" do
+      result = ListFindNoRepo.data_provider()
+               |> DataProvider.reload()
+
+      assert result === %DataProvider{
+               module: ListFindNoRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
+    end
+    test "test for `ListFindValidRepo`" do
+      result = ListFindValidRepo.data_provider()
+               |> DataProvider.reload()
+
+      assert result === %DataProvider{
+               module: ListFindValidRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
+    end
+    test "test for `ListFindInvalidRepo`" do
+      result = ListFindInvalidRepo.data_provider()
+               |> DataProvider.reload()
+
+      assert result === %DataProvider{
+               module: ListFindInvalidRepo,
+               data: %DataProvider.Data{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], total_count: 1000},
+               search_options: %DataProvider.SearchOptions{options: %{}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
+               sort: %DataProvider.Sort{options: []}
+             }
+    end
+
+    test "test for `InvalidFindNoRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindNoRepo.data_provider()
+        |> DataProvider.init()
+      end
+    end
+    test "test for `InvalidFindValidRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindValidRepo.data_provider()
+        |> DataProvider.init()
+      end
+    end
+    test "test for `InvalidFindInvalidRepo`" do
+      assert_raise DataProvider.UndefinedFindResultError, fn ->
+        InvalidFindInvalidRepo.data_provider()
+        |> DataProvider.init()
       end
     end
   end
@@ -1010,14 +2867,36 @@ defmodule DataProviderTest do
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1029,14 +2908,36 @@ defmodule DataProviderTest do
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1048,14 +2949,36 @@ defmodule DataProviderTest do
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1073,14 +2996,57 @@ defmodule DataProviderTest do
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1098,14 +3064,57 @@ defmodule DataProviderTest do
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1117,14 +3126,57 @@ defmodule DataProviderTest do
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1136,14 +3188,56 @@ defmodule DataProviderTest do
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]                                                                                                                                                                                                                                                                                                                                                                                               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1179,7 +3273,18 @@ defmodule DataProviderTest do
              module: NoFindNoRepo,
              data: %DataProvider.Data{items: [], total_count: 0},
              search_options: %DataProvider.SearchOptions{options: %{}},
-             pagination: %DataProvider.Pagination{page: 123, params: %DataProvider.Pagination.Params{page_size: 15}},
+             pagination: %DataProvider.Pagination{
+               page: 123,
+               params: %DataProvider.Pagination.Params{
+                 page_size: 15,
+                 pages_ahead: 3,
+                 pages_behind: 3,
+                 load_first_page?: true,
+                 load_last_page?: true,
+                 load_opening_separator?: true,
+                 load_closing_separator?: true
+               }
+             },
              sort: %DataProvider.Sort{}
            }
   end
@@ -1193,14 +3298,36 @@ defmodule DataProviderTest do
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1212,14 +3339,36 @@ defmodule DataProviderTest do
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1231,14 +3380,36 @@ defmodule DataProviderTest do
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1256,14 +3427,56 @@ defmodule DataProviderTest do
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [%DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1281,14 +3494,57 @@ defmodule DataProviderTest do
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1300,14 +3556,57 @@ defmodule DataProviderTest do
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1319,14 +3618,57 @@ defmodule DataProviderTest do
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1136..1150), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 10, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 10,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :first},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 7, title: "7", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 8, title: "8", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 9, title: "9", type: :regular},
+                   %DataProvider.Pagination.Page{active: true, number: 10, title: "10", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 11, title: "11", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 12, title: "12", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 13, title: "13", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1362,7 +3704,18 @@ defmodule DataProviderTest do
              module: NoFindNoRepo,
              data: %DataProvider.Data{items: [], total_count: 0},
              search_options: %DataProvider.SearchOptions{options: %{my_custom: "filter"}},
-             pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+             pagination: %DataProvider.Pagination{
+               page: 1,
+               params: %DataProvider.Pagination.Params{
+                 page_size: 15,
+                 pages_ahead: 3,
+                 pages_behind: 3,
+                 load_first_page?: true,
+                 load_last_page?: true,
+                 load_opening_separator?: true,
+                 load_closing_separator?: true
+               }
+             },
              sort: %DataProvider.Sort{}
            }
   end
@@ -1376,14 +3729,36 @@ defmodule DataProviderTest do
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1395,14 +3770,36 @@ defmodule DataProviderTest do
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1414,14 +3811,36 @@ defmodule DataProviderTest do
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1439,14 +3858,45 @@ defmodule DataProviderTest do
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1464,14 +3914,45 @@ defmodule DataProviderTest do
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1483,14 +3964,45 @@ defmodule DataProviderTest do
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1502,14 +4014,45 @@ defmodule DataProviderTest do
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1001..1015), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{"rem" => 4}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{}
              }
     end
@@ -1540,14 +4083,36 @@ defmodule DataProviderTest do
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: [desc: :inserted_at]}
              }
     end
@@ -1559,14 +4124,36 @@ defmodule DataProviderTest do
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: [desc: :inserted_at]}
              }
     end
@@ -1578,14 +4165,36 @@ defmodule DataProviderTest do
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: NoFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{options: [desc: :inserted_at]}
              }
     end
@@ -1604,14 +4213,45 @@ defmodule DataProviderTest do
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: QueryFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..100), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: [desc: :inserted_at]}
              }
     end
@@ -1630,14 +4270,44 @@ defmodule DataProviderTest do
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 }
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindNoRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..15), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: [desc: :inserted_at]}
              }
     end
@@ -1649,14 +4319,45 @@ defmodule DataProviderTest do
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindValidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..15), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: [desc: :inserted_at]}
              }
     end
@@ -1668,14 +4369,45 @@ defmodule DataProviderTest do
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: [], total_count: 0},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: []
+               },
                sort: %DataProvider.Sort{}
              }
       assert result === %DataProvider{
                module: ListFindInvalidRepo,
                data: %DataProvider.Data{items: Enum.to_list(1..15), total_count: 1000},
                search_options: %DataProvider.SearchOptions{options: %{}},
-               pagination: %DataProvider.Pagination{page: 1, params: %DataProvider.Pagination.Params{page_size: 15}},
+               pagination: %DataProvider.Pagination{
+                 page: 1,
+                 params: %DataProvider.Pagination.Params{
+                   page_size: 15,
+                   pages_ahead: 3,
+                   pages_behind: 3,
+                   load_first_page?: true,
+                   load_last_page?: true,
+                   load_opening_separator?: true,
+                   load_closing_separator?: true
+                 },
+                 pages: [
+                   %DataProvider.Pagination.Page{active: true, number: 1, title: "1", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 2, title: "2", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 4, title: "4", type: :regular},
+                   %DataProvider.Pagination.Page{active: false, number: 0, title: "...", type: :separator},
+                   %DataProvider.Pagination.Page{active: false, number: 67, title: "67", type: :last}
+                 ]
+               },
                sort: %DataProvider.Sort{options: [desc: :inserted_at]}
              }
     end
