@@ -1,7 +1,20 @@
 defmodule DataProvider.Pagination do
   @moduledoc ~S"""
-  Module, which implements business logic of separation data by
-  pages in `DataProvider`.
+  Pagination module provides struct with actual pagination data
+  for current `DataProvider`
+
+  ## Fields
+
+    * `page` - Current page of this data provider, by default equal 1. This value is dynamic,
+    and can be changed in runtime.
+
+    * `params` - Pagination params. This field contain `DataProvider.Pagination.Params` struct
+    and uses for configuring inner logic of `DataProvider.Pagination` and/or `DataProvider`
+
+    * `pages` - List of values for fast move between pages. Every single page it is
+    `DataProvider.Pagination.Page` struct and this list sensitive for specific params, which
+    used in his creation. This field most useful when you need to render list of pages under
+    data table. More details you can find in `DataProvider.Pagination.Params` and `DataProvider.Pagination.Params`.
   """
 
 

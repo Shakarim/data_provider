@@ -1,6 +1,48 @@
 defmodule DataProvider.Pagination.Params do
   @moduledoc ~S"""
   Params module for `DataProvider.Pagination`
+
+  ## Fields
+
+    * `page_size` -  Defines count of items in page.
+
+    * `pages_ahead` - Param which define count of pages, which will be loaded after
+    current page in list.
+
+    NOTE: This param affect `pages` of `DataProvider.Pagination`
+
+    * `pages_behind` - Param which define count of pages, which will be loaded before
+    current page in list.
+
+    NOTE: This param affect `pages` of `DataProvider.Pagination`
+
+    * `load_first_page?` - Defines existings of the navigation to first page. If this
+    param is `true` - `pages` list of your `DataProvider.Pagination` gonna contain
+    `DataProvider.Pagination.Page` which will point at first page (if it doesn't shown
+    already)
+
+    NOTE: This param affect `pages` of `DataProvider.Pagination`
+
+    * `load_last_page` - Defines existings of the navigation to last page. If this param
+    is `true` - `pages` list of your `DataProvider.Pagination` gonna contain
+    `DataProvider.Pagination.Page` which will point at last page (if it doesn't shown already)
+
+    NOTE: This param affect `pages` of `DataProvider.Pagination`
+
+    * `load_opening_separator` - Defines existings of the separator between `regular`
+    pages and first page item. If this param is `true` - `pages` list of your
+    `DataProvider.Pagination` gonna contain `DataProvider.Pagination.Page` which will
+    not contain valid navigation params. It will just blank item.
+
+    NOTE: This param affect `pages` of `DataProvider.Pagination`
+
+    * `load_closing_separator` - Defines existings of the separator between `regular` pages
+    and last page item. If this param is `true` - `pages` list of your
+    `DataProvider.Pagination` gonna contain `DataProvider.Pagination.Page` which will not
+    contain valid navigation params. It will just blank item.
+
+    NOTE: This param affect `pages` of `DataProvider.Pagination`
+
   """
 
   @default_page_size 15
@@ -19,6 +61,26 @@ defmodule DataProvider.Pagination.Params do
             load_opening_separator?: @default_load_opening_separator?,
             load_closing_separator?: @default_load_closing_separator?
 
+  @typedoc ~S"""
+  Struct of params for `DataProvider.Pagination`.
+
+  ## Fields
+
+    * `page_size` -  Integer, by default is 15
+
+    * `pages_ahead` - Integer, by default is 3
+
+    * `pages_behind` - Integer, by default is 3
+
+    * `load_first_page?` - Boolean, by default is `true`
+
+    * `load_last_page` - Boolean, by default is `true`
+
+    * `load_opening_separator` - Boolean, by default is `true`
+
+    * `load_closing_separator` - Boolean, by default is `true`
+
+  """
   @type t() :: %__MODULE__{
                  page_size: integer(),
                  pages_ahead: integer(),
