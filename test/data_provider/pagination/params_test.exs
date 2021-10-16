@@ -2,7 +2,6 @@ defmodule DataProvider.ParamsTest do
   use ExUnit.Case
   alias Ecto.Query
   alias DataProvider.Pagination.Params
-  import Query
   doctest DataProvider.Pagination.Params
 
   describe "`create/1` |" do
