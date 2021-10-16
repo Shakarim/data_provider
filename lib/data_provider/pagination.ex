@@ -4,12 +4,14 @@ defmodule DataProvider.Pagination do
   pages in `DataProvider`.
   """
 
+
   alias DataProvider.Pagination.Page
   alias DataProvider.Pagination.Params
 
   @default_page 1
 
   defstruct page: @default_page,
+            pages: [],
             params: %Params{}
 
   @typedoc ~S"""
@@ -19,11 +21,14 @@ defmodule DataProvider.Pagination do
 
     * `page` - Current page of dataprovider.
 
+    * `pages` - Pages which loaded for current pagination
+
     * `page_size` - count of items in one page of data provider.
 
   """
   @type t() :: %__MODULE__{
                  page: integer(),
+                 pages: list(Page.t),
                  params: Params.t
                }
 
@@ -99,23 +104,29 @@ defmodule DataProvider.Pagination do
 
   ## Arguments
 
-    1. Total count of items
+    1. `DataProvider.Pagination` struct
 
-    2. Current page number
-
-    3. Options keyword
+    2. Total count of items
 
   ## Returns
 
-      [
+  Function returns `DataProvider.Pagination` which `:pages` field is fill
+
+      %DataProvider.Pagination{
         ...
-        %DataProvider.Pagination.Page{},
-        %DataProvider.Pagination.Page{},
-        %DataProvider.Pagination.Page{},
+        pages: [
+          ...
+          %DataProvider.Pagination.Page{},
+          %DataProvider.Pagination.Page{},
+          %DataProvider.Pagination.Page{},
+          ...
+        ]
         ...
-      ]
+      }
 
   ## Options
+
+  Options, that can affect result of this function
 
     `:pages_ahead` - The maximum count of pages, which will be loaded ahead of current position.
 
@@ -125,8 +136,97 @@ defmodule DataProvider.Pagination do
 
     `:load_last_page?` - Boolean value which indicates requirement of loading the last page in list.
 
-  """
-  def create_page_list(total_count, current_page, opts \\ []) when is_integer(total_count) and is_integer(current_page) do
+    `:load_opening_separator?` - Boolean value which indicates requirement of loading the separator page in list.
 
+    `:load_closing_separator?` - Boolean value which indicates requirement of loading the separator page in list.
+
+  """
+  @spec create_page_list(DataProvider.Pagination.t, integer()) :: DataProvider.Pagination.t
+  def create_page_list(pagination, total_count \\ 0)
+  def create_page_list(%__MODULE__{params: %Params{page_size: page_size}, page: current_page} = pagination, 0)
+      when is_integer(current_page) and current_page > 0 and page_size > 0, do: %{pagination | pages: []}
+  def create_page_list(%__MODULE__{params: %Params{page_size: page_size}, page: current_page} = pagination, total_count)
+      when is_integer(total_count) and is_integer(current_page) and current_page > 0 and page_size > 0 do
+    page_count = total_count/page_size |> Float.ceil() |> trunc()
+    pages = []
+            |> put_first_page(pagination, page_count)
+            |> put_opening_separator_page(pagination, page_count)
+            |> put_regular_pages(pagination, page_count)
+            |> put_closing_separator_page(pagination, page_count)
+            |> put_last_page(pagination, page_count)
+
+    %{pagination | pages: pages}
   end
+
+  # ====================
+  #  FIRST PAGE
+  # ====================
+  # Puts first page of page list
+  defp put_first_page(page_list, %__MODULE__{page: page, params: %Params{load_first_page?: true} = params}, _)
+       when is_list(page_list) and is_integer(page) do
+    pages = if (page - params.pages_behind - 1 > 1),
+               do: [%Page{type: :first, active: false, title: "1", number: 1}],
+               else: []
+    page_list ++ pages
+  end
+  defp put_first_page(page_list, %__MODULE__{params: %Params{load_first_page?: false}}, _)
+       when is_list(page_list), do: page_list
+
+  # ====================
+  #  OPENING SEPARATOR
+  # ====================
+  # Puts first page of page list
+  defp put_opening_separator_page(page_list, %__MODULE__{page: page, params: %Params{load_opening_separator?: true} = params}, _)
+       when is_list(page_list) and is_integer(page) do
+    pages = if (page - params.pages_behind > 1),
+               do: [%Page{type: :separator, active: false, title: "...", number: 0}],
+               else: []
+    page_list ++ pages
+  end
+  defp put_opening_separator_page(page_list, %__MODULE__{params: %Params{load_opening_separator?: false}}, _)
+       when is_list(page_list), do: page_list
+
+  # ====================
+  #  REGULAR PAGE
+  # ====================
+  # Puts first page of page list
+  defp put_regular_pages(page_list, %__MODULE__{page: page, params: %Params{} = params}, page_count)
+       when is_list(page_list) and is_integer(page_count) and is_integer(page) do
+    pages = (page - params.pages_behind)..(page + params.pages_ahead)
+            |> Enum.to_list()
+            |> Enum.filter(&(&1 > 0 and &1 <= page_count))
+            |> Enum.map(&(%Page{type: :regular, active: &1 === page, title: Integer.to_string(&1), number: &1}))
+
+    page_list ++ pages
+  end
+  defp put_regular_pages(page_list, %__MODULE__{params: %Params{load_first_page?: false}}, _)
+       when is_list(page_list), do: page_list
+
+  # ====================
+  #  CLOSING SEPARATOR
+  # ====================
+  # Puts first page of page list
+  defp put_closing_separator_page(page_list, %__MODULE__{page: page, params: %Params{load_closing_separator?: true} = params}, page_count)
+       when is_list(page_list) and is_integer(page_count) and is_integer(page) do
+    pages = if (page + params.pages_ahead < page_count),
+               do: [%Page{type: :separator, active: false, title: "...", number: 0}],
+               else: []
+    page_list ++ pages
+  end
+  defp put_closing_separator_page(page_list, %__MODULE__{params: %Params{load_closing_separator?: false}}, _)
+       when is_list(page_list), do: page_list
+
+  # ====================
+  #  LAST PAGE
+  # ====================
+  # Puts first page of page list
+  defp put_last_page(page_list, %__MODULE__{page: page, params: %Params{load_last_page?: true} = params}, page_count)
+       when is_list(page_list) and is_integer(page_count) and is_integer(page) do
+    pages = if (page + params.pages_ahead + 1 < page_count),
+               do: [%Page{type: :last, active: false, title: Integer.to_string(page_count), number: page_count}],
+               else: []
+    page_list ++ pages
+  end
+  defp put_last_page(page_list, %__MODULE__{params: %Params{load_last_page?: false}}, _)
+       when is_list(page_list), do: page_list
 end
