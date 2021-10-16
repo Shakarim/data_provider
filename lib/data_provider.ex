@@ -103,8 +103,19 @@ defmodule DataProvider do
         pagination: %DataProvider.Pagination{
           page: 2,
           params: %DataProvider.Pagination.Params{
-            page_size: 15
-          }
+            page_size: 15,
+            pages_ahead: 3,
+            pages_behind: 3,
+            load_first_page?: true,
+            load_last_page?: true,
+            load_opening_separator?: true,
+            load_closing_separator?: true
+          },
+          pages: [
+            %DataProvider.Pagination.Page{active: false, number: 1, title: "1", type: :regular},
+            %DataProvider.Pagination.Page{active: true, number: 2, title: "2", type: :regular},
+            %DataProvider.Pagination.Page{active: false, number: 3, title: "3", type: :regular}
+          ]
         }
       }
 

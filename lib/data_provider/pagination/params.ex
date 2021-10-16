@@ -7,41 +7,32 @@ defmodule DataProvider.Pagination.Params do
     * `page_size` -  Defines count of items in page.
 
     * `pages_ahead` - Param which define count of pages, which will be loaded after
-    current page in list.
-
-    NOTE: This param affect `pages` of `DataProvider.Pagination`
+    current page in list. NOTE: This param affect `pages` of `DataProvider.Pagination`.
 
     * `pages_behind` - Param which define count of pages, which will be loaded before
-    current page in list.
-
-    NOTE: This param affect `pages` of `DataProvider.Pagination`
+    current page in list. NOTE: This param affect `pages` of `DataProvider.Pagination`.
 
     * `load_first_page?` - Defines existings of the navigation to first page. If this
     param is `true` - `pages` list of your `DataProvider.Pagination` gonna contain
     `DataProvider.Pagination.Page` which will point at first page (if it doesn't shown
-    already)
-
-    NOTE: This param affect `pages` of `DataProvider.Pagination`
+    already). NOTE: This param affect `pages` of `DataProvider.Pagination`.
 
     * `load_last_page` - Defines existings of the navigation to last page. If this param
     is `true` - `pages` list of your `DataProvider.Pagination` gonna contain
-    `DataProvider.Pagination.Page` which will point at last page (if it doesn't shown already)
-
-    NOTE: This param affect `pages` of `DataProvider.Pagination`
+    `DataProvider.Pagination.Page` which will point at last page (if it doesn't shown already).
+    NOTE: This param affect `pages` of `DataProvider.Pagination`.
 
     * `load_opening_separator` - Defines existings of the separator between `regular`
     pages and first page item. If this param is `true` - `pages` list of your
     `DataProvider.Pagination` gonna contain `DataProvider.Pagination.Page` which will
-    not contain valid navigation params. It will just blank item.
-
-    NOTE: This param affect `pages` of `DataProvider.Pagination`
+    not contain valid navigation params. It will just blank item. NOTE: This param affect
+    `pages` of `DataProvider.Pagination`.
 
     * `load_closing_separator` - Defines existings of the separator between `regular` pages
     and last page item. If this param is `true` - `pages` list of your
     `DataProvider.Pagination` gonna contain `DataProvider.Pagination.Page` which will not
-    contain valid navigation params. It will just blank item.
-
-    NOTE: This param affect `pages` of `DataProvider.Pagination`
+    contain valid navigation params. It will just blank item. NOTE: This param affect `pages`
+    of `DataProvider.Pagination`.
 
   """
 
