@@ -1,10 +1,11 @@
 # Changelog for v1.x
 
-## 1.2.0 (2021-10-14)
+## 1.2.0 (2021-10-16)
 
 ### Enhancements
 
 * Set `:params` field of `DataProvider.Pagination` as independent module `DataProvider.Pagination.Params`
+* Add `:pages` field with available pages into `DataProvider.Pagination` struct. 
 
 ## 1.1.0 (2021-10-11)
 
