@@ -5,7 +5,7 @@ defmodule DataProvider.MixProject do
     [
       app: :data_provider,
       name: "DataProvider",
-      version: "1.2.0",
+      version: "1.2.1",
       elixir: "~> 1.12",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -33,7 +33,7 @@ defmodule DataProvider.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ecto_sql, "~> 3.4", only: [:test, :dev]},
+      {:ecto_sql, ">= 0.0.0"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end

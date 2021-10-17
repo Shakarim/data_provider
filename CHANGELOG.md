@@ -1,5 +1,11 @@
 # Changelog for v1.x
 
+## 1.2.1 (2021-10-18)
+
+### Enhancements
+
+* Set `{:ecto_sql, "~> 3.4", only: [:test, :dev]}` dependency as `{:ecto_sql, ">= 0.0.0"}` 
+
 ## 1.2.0 (2021-10-16)
 
 ### Enhancements
